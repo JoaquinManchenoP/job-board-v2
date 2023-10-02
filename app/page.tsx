@@ -9,12 +9,10 @@ export default function Home() {
       <div className="header">
         <Header />
       </div>
-      <div className="featured bg-red-300 w-full h-[400px] ">
-        <Featured />
-      </div>
-      <div className="card bg-white h-screen flex item-center justify-center mobile:w-screen tablet:w-11/12">
-        <JobCard />
-      </div>
+
+      <Featured />
+
+      <JobCard />
     </main>
   );
 }
