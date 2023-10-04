@@ -1,7 +1,6 @@
-import React from 'react'
+import React from "react";
+import Link from "next/link";
 
 export default function page() {
-  return (
-    <div>this is the companies page</div>
-  )
+  return <div>this is the companies page</div>;
 }
