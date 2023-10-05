@@ -3,11 +3,11 @@ import React from "react";
 import Header from "@/app/components/Header/Header";
 import { useState } from "react";
 
-export default function page() {
-  const [menuState, setMenuState] = useState(false);
+export default function ProfilePage() {
   return (
     <div className="profile__page">
-      <Header menuState={menuState} setMenuState={setMenuState} />
+      <Header />
+      <div className="profile__page">this is the prfile page</div>
     </div>
   );
 }
