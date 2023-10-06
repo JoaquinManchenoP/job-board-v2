@@ -1,5 +1,5 @@
 "use client";
-import JobCard from "./components/JobCard/JobCard";
+import JobCard from "./jobs/JobCard/JobCard";
 import Featured from "./components/FeaturedSection/Featured";
 import Header from "./components/Header/Header";
 

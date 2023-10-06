@@ -1,18 +1,18 @@
 "use client";
-import React, { useEffect } from "react";
-import { useState, useContext } from "react";
-import AppContext from "@/app/context/AppContext";
 import Header from "../components/Header/Header";
+import CompanyCard from "./CompanyCard/CompanyCard";
 
 export default function CompaniesPage() {
-  const context = useContext(AppContext);
-  useEffect(() => {
-    console.log(context);
-  }, []);
   return (
-    <div>
-      <Header />
-      <div className="company__page">company page</div>
+    <div className="companies__page">
+      <div className="header">
+        <Header />
+      </div>
+      <div className="companies__container h-full w-full bg-purple-500 flex flex-col items-center space-y-5 pt-10">
+        <CompanyCard />
+        <CompanyCard />
+        <CompanyCard />
+      </div>
     </div>
   );
 }
