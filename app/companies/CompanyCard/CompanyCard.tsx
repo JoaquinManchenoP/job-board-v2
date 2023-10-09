@@ -4,7 +4,7 @@ import { HiLocationMarker } from "react-icons/hi";
 import { BsPeopleFill } from "react-icons/bs";
 export default function CompanyCard() {
   return (
-    <div className="h-[450px] mobile:w-11/12 tablet:w-11/12 max-w-[600px]  bg-gray-100 rounded-md shadow-md flex flex-col">
+    <div className="h-[450px] mobile:w-11/12 tablet:w-11/12 max-w-[700px]  bg-gray-100 rounded-md shadow-md flex flex-col">
       <div className="image h-1/2 w-full">
         <img
           className="company__image h-full w-full object-cover"
