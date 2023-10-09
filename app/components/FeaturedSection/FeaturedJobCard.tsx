@@ -1,18 +1,23 @@
 import React from "react";
-import FeaturedJobCardDescription from "./FeaturedJobCardDescription";
-import Image from "next/image";
+import { AiFillTags } from "react-icons/ai";
+import { HiLocationMarker } from "react-icons/hi";
+import { BsPeopleFill } from "react-icons/bs";
 
 export default function FeaturedJobCard() {
   return (
-    <div className="featured__job h-full w-full rounded-md shadow-xl bg-orange-500 flex ">
-      <div className="featured__card__image mobile:w-1/3 tablet:min-w-[160px] h-full flex items-center justify-center bg-purple-400 ">
+    <div className="h-full w-full max-w-[900px]  bg-gray-100 rounded-md shadow-md flex flex-col">
+      <div className="image h-3/5 w-full">
         <img
-          className="mobile:h-28 mobile:w-28 tablet:h-36 tablet:w-36 object-contain "
-          src="https://seeklogo.com/images/R/rounded-design-company-logo-58FEBA6563-seeklogo.com.png"
+          className="company__image h-full w-full object-cover"
+          src="https://www.bobbitt.com/wp-content/uploads/2018/07/6-Teamwork-Skills-Every-Company-Should-Cultivate.jpg"
         ></img>
       </div>
-      <div className="featured__card__description w-2/3 h-full bg-green-400">
-        this is description
+      <div className="company__description  h-2/5 w-full flex  items-center">
+        <div className="left__side h-full w-1/3 bg-purple-500 flex items-center justify-center">
+          <div className="image h-20 w-20 bg-green-400 rounded-full">
+            <img src="https://seeklogo.com/images/R/rounded-design-company-logo-58FEBA6563-seeklogo.com.png"></img>
+          </div>
+        </div>
       </div>
     </div>
   );

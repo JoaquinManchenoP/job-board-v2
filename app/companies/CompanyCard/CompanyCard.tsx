@@ -2,13 +2,14 @@ import React from "react";
 import { AiFillTags } from "react-icons/ai";
 import { HiLocationMarker } from "react-icons/hi";
 import { BsPeopleFill } from "react-icons/bs";
-import { BsStarFill } from "react-icons/bs";
-
 export default function CompanyCard() {
   return (
     <div className="h-[450px] mobile:w-11/12 tablet:w-11/12 max-w-[600px]  bg-gray-100 rounded-md shadow-md flex flex-col">
-      <div className="image h-1/2 w-full bg-purple-400">
-        this is the image section
+      <div className="image h-1/2 w-full">
+        <img
+          className="company__image h-full w-full object-cover"
+          src="https://www.bobbitt.com/wp-content/uploads/2018/07/6-Teamwork-Skills-Every-Company-Should-Cultivate.jpg"
+        ></img>
       </div>
       <div className="company__description  h-1/2 w-full flex flex-col items-center">
         <div className="company__info__container h-[160px] w-6/12 flex flex-col justify-center space-y-2 text-sm">
