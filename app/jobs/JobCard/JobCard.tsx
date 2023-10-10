@@ -1,7 +1,8 @@
 import React from "react";
 import { FeaturedPageData } from "@/app/Data/FeaturedPage/FeaturedPageData";
 
-export default function JobCard() {
+export default function JobCard({ position }) {
+  console.log(position.positionTitle);
   return (
     <div className="h-32 mobile:w-11/12 tablet:w-9/12 max-w-[700px]  bg-gray-100 rounded-md shadow-md flex">
       <div className="company_image h-full w-[130px] flex flex-col items-center justify-center">
@@ -10,16 +11,12 @@ export default function JobCard() {
         </div>
       </div>
       <div className="job h-full w-full flex flex-col  justify-center text-sm ml-3 ">
-        <div className="job__title">{FeaturedPageData["position-title"]}</div>
-        <div className="company__name font-bold">
-          {FeaturedPageData["company-name"]}
-        </div>
-        <div className="company__loaction">
-          {FeaturedPageData["position-location"]}
-        </div>
+        <div className="job__title">{position.positionTitle}</div>
+        <div className="company__name font-bold">{position.companyName}</div>
+        <div className="company__loaction">{position.positionLocation}</div>
         <div className="salary__range font-light">
-          {FeaturedPageData["salary-range"]}
-          {FeaturedPageData["salary-in"]}
+          {position.salaryRange}
+          {position.salarIn}
         </div>
       </div>
     </div>

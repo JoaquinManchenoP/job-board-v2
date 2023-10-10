@@ -22,15 +22,13 @@ export default function FeaturedJobCard() {
           <div className="job__title font-bold text-lg">
             <span>Software engineer</span>
           </div>
-          <div className="job__description h-fuill w-full bg-purple-400 text-sm overflow-hidden">
+          <div className="job__description w-full bg-purple-400 text-sm overflow-hidden pr-12">
             Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
             a eius, dolor quia commodi labore!
           </div>
-          <div className="job__details flex space-x-3 text-sm ">
-            <div className="job__location flex space-x-2">
-              <HiLocationMarker />
-              <span>Berlin, Germany</span>
-            </div>
+          <div className="job__location w-full bg-purple-500 flex items-center space-x-2">
+            <HiLocationMarker />
+            <span>Berlin, Germany</span>
           </div>
         </div>
       </div>
