@@ -16,7 +16,7 @@ export default function Home() {
       <div className="job__cards h-full w-full flex flex-col items-center justify-center space-y-5 pt-20">
         {FeaturedPageData.map((job, index) => (
           <Link
-            href={`/pages/jobs/${job.jobId}`}
+            href={`/pages/jobListing/${job.jobId}`}
             className="h-full w-full flex items-center justify-center"
           >
             <JobCard position={job} />
