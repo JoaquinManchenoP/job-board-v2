@@ -1,8 +1,9 @@
-import JobCard from "./jobs/JobCard/JobCard";
+import JobCard from "./jobs/jobCard/JobCard";
 import Featured from "./components/FeaturedSection/Featured";
 import Header from "./components/Header/Header";
 import { FeaturedPageData } from "./Data/FeaturedPage/FeaturedPageData";
 import Link from "next/link";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
       <div className="featured h-full w-full">
         <Featured />
       </div>
-      <div className="job__cards h-full w-full flex flex-col items-center justify-center space-y-5 pt-20">
+      <div className="job__cards h-full w-full flex flex-col items-center justify-center space-y-5 pt-[100px]">
         {FeaturedPageData.map((job, index) => (
           <Link
             href={`/pages/jobListing/${job.jobId}`}
@@ -22,6 +23,9 @@ export default function Home() {
             <JobCard position={job} />
           </Link>
         ))}
+      </div>
+      <div className="footer">
+        <Footer />
       </div>
     </main>
   );

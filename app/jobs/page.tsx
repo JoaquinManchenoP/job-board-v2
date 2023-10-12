@@ -2,7 +2,7 @@
 import React from "react";
 import { useState } from "react";
 import Header from "@/app/components/Header/Header";
-import JobCard from "./JobCard/JobCard";
+import JobCard from "./jobCard/JobCard";
 import { FeaturedPageData } from "../Data/FeaturedPage/FeaturedPageData";
 import Link from "next/link";
 
