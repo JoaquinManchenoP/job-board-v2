@@ -1,11 +1,7 @@
 import React from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useRouter } from "next/navigation";
 
 export default function Menu() {
-  let pathname = usePathname();
-
   return (
     <div className="h-[200px] w-full bg-white flex items-center justify-center">
       <div className="menu__content h-4/5 w-full ">

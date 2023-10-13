@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import { useParams } from "next/navigation";
 import Header from "@/app/components/Header/Header";
 import JobHeader from "@/app/jobs/jobHeader/JobHeader";
 import FullJobDescription from "@/app/jobs/FullJobDescription/FullJobDescription";
