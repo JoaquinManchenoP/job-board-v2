@@ -13,7 +13,7 @@ export default function CompaniesPage() {
       <div className="header">
         <Header />
       </div>
-      <div className="featurec__companies__header">
+      <div className="featured__companies__header">
         <FeaturedCompaniesHeader />
       </div>
       <div className="companies__container h-full w-full flex flex-col space-y-10 pt-10">
