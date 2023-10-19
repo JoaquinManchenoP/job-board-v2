@@ -27,7 +27,9 @@ export default function CompaniesPage() {
           </Link>
         ))}
       </div>
-      <Footer />
+      <div className="footer pt-20">
+        <Footer />
+      </div>
     </div>
   );
 }

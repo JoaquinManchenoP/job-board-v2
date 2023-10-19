@@ -13,8 +13,10 @@ export default function FullJobDescription() {
           ab nesciunt mollitia quo optio?
         </span>
       </div>
-      <div className="apply__job h-10 w-[220px] bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-2 flex items-center justify-center">
-        <span>Apply to Job</span>
+      <div className="apply__job h-20 w-full bg-orange-200 flex items-centery justify-center">
+        <button className="bg-blue-500 h-14 w-38 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded">
+          Apply to job
+        </button>
       </div>
     </div>
   );

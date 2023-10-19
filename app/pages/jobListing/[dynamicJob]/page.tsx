@@ -21,14 +21,14 @@ export default function jobListingPage() {
     <>
       <div className="job__listing screen">
         <Header />
-        <div className="listing__layout h-screen w-screen bg-purple-400">
+        <div className="listing__layout h-full w-screen bg-purple-400">
           <div className=" listing__header h-[250px] w-full bg-red-500 flex items-center justify-center">
             <JobHeader job={mockData} />
           </div>
-          <div className="job__description h-[500px] w-full  flex items-center justify-center">
+          <div className="job__description h-[600px] w-full  flex items-center justify-center">
             <FullJobDescription />
           </div>
-          <div className="footer h-20 w-full bg-red-400">
+          <div className="footer h-20 w-full bg-red-400 mt-20">
             <Footer />
           </div>
         </div>

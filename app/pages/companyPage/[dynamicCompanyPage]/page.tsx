@@ -20,9 +20,9 @@ export default function DynamicCompanyPage() {
         <CompanyPageHeader />
       </div>
       <div className="company__page__content">
-        <div className="title__postings">postings</div>
+        <div className="title__postings ml-20 mt-10 text-xl">postings</div>
         <div className="allpostings">
-          <div className="job__cards h-full w-full flex flex-col items-center justify-center space-y-5 pt-20">
+          <div className="job__cards h-full w-full flex flex-col items-center justify-center space-y-5 pt-10">
             {CompanyData[0].companyJobs.map((job, index) => (
               <div className="job h-full w-full" key={index}>
                 <Link
