@@ -1,7 +1,5 @@
 "use client";
 import React from "react";
-import { useState } from "react";
-import Header from "@/app/components/Header/Header";
 import JobCard from "./jobCard/JobCard";
 import { FeaturedPageData } from "../Data/FeaturedPage/FeaturedPageData";
 import Link from "next/link";
@@ -12,9 +10,6 @@ export default function JobPage() {
   return (
     <div className="">
       <div className="profile__page">
-        <div className="header">
-          <Header />
-        </div>
         <div className="featured__companies__header">
           <PageSpecificHeader pageTitle={"Search fo your new job"} />
         </div>

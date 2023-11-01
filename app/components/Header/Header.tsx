@@ -3,9 +3,10 @@ import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Menu from "./Menu/Menu";
 import Link from "next/link";
+import { userAuth } from "@/app/context/AuthContext";
 
 export default function Header() {
-  const [menuState, setMenuState] = useState(false);
+  const { menuState, setMenuState } = userAuth();
 
   const handleMenuState = () => {
     if (menuState) {

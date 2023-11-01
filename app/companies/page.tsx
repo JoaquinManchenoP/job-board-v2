@@ -1,5 +1,5 @@
 "use client";
-import Header from "../components/Header/Header";
+
 import CompanyCard from "./CompanyCard/CompanyCard";
 import { CompanyData } from "../Data/CompanyData/CompanyData";
 import Link from "next/link";
@@ -10,9 +10,6 @@ export default function CompaniesPage() {
   console.log(CompanyData);
   return (
     <div className="companies__page">
-      <div className="header">
-        <Header />
-      </div>
       <div className="featured__companies__header">
         <PageSpecificHeader pageTitle={"Featured Companies"} />
       </div>

@@ -8,9 +8,6 @@ import Footer from "./components/Footer";
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center ">
-      <div className="header h-full w-full">
-        <Header />
-      </div>
       <div className="featured h-full w-full">
         <Featured />
       </div>

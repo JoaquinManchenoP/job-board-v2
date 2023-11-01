@@ -43,9 +43,6 @@ export default function PostJob() {
   return (
     <>
       <div className="create__account__page ">
-        <div className="header">
-          <Header />
-        </div>
         <div className="featured__companies__header">
           <PageSpecificHeader pageTitle={"Post a job"} />
         </div>

@@ -13,9 +13,6 @@ export default function DynamicCompanyPage() {
 
   return (
     <div className="company__page">
-      <div className="header">
-        <Header />
-      </div>
       <div>
         <CompanyPageHeader />
       </div>
