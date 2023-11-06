@@ -7,16 +7,32 @@ import {
   GoogleAuthProvider,
 } from "firebase/auth";
 import { auth } from "../firebase";
+import { useRouter } from "next/navigation";
 
 const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
+  const { push } = useRouter();
   const [user, setUser] = useState(null);
   const [menuState, setMenuState] = useState(false);
 
   const googleSignIn = () => {
     const provider = new GoogleAuthProvider();
-    signInWithPopup(auth, provider);
+    signInWithPopup(auth, provider)
+      .then((result) => {
+        console.log("sucessfull auth");
+      })
+      .catch((error) => {
+        if (error.code === "auth/popup-closed-by-user") {
+          // Handle the popup being closed without authentication
+          console.log("Google Sign-In popup was closed without authentication");
+          console.log("redirect to the ain page");
+          push("/");
+        } else {
+          // Handle other authentication errors
+          console.error("Google Sign-In failed", error);
+        }
+      });
   };
 
   const logOut = () => {
