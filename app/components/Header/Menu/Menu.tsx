@@ -10,14 +10,6 @@ export default function Menu() {
   const [isPopupClosed, setIsPopupClosed] = useState(false);
 
   const handleSignIn = async () => {
-    try {
-      await googleSignIn();
-      console.log("try");
-    } catch (error) {
-      console.log("catch");
-      console.log(error);
-    }
-    console.log("you have not yet signed in");
     setMenuState(false);
   };
 
