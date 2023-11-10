@@ -36,16 +36,10 @@ export default function Menu() {
           >
             <Link href="/jobs">jobs</Link>
           </div>
-          <div
-            onClick={() => setMenuState(false)}
-            className="companies__option h-full w-4/5  flex items-center border-b border-gray-400"
-          >
+          <div className="companies__option h-full w-4/5  flex items-center border-b border-gray-400">
             <Link href="/companies">companies</Link>
           </div>
-          <div
-            onClick={() => setMenuState(false)}
-            className="companies__option h-full w-4/5  flex items-center border-b border-gray-400"
-          >
+          <div className="companies__option h-full w-4/5  flex items-center border-b border-gray-400">
             <Link href="/pages/postJobPage">Post a Job</Link>
           </div>
           {user ? (

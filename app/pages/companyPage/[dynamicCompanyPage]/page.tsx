@@ -8,7 +8,6 @@ import Link from "next/link";
 import JobCard from "@/app/jobs/jobCard/JobCard";
 
 export default function DynamicCompanyPage() {
-  const params = useParams();
   console.log(CompanyData[0]);
 
   return (
