@@ -26,7 +26,6 @@ export const AuthContextProvider = ({ children }) => {
         if (error.code === "auth/popup-closed-by-user") {
           // Handle the popup being closed without authentication
           console.log("Google Sign-In popup was closed without authentication");
-          console.log("redirect to the ain page");
           push("/");
         } else {
           // Handle other authentication errors

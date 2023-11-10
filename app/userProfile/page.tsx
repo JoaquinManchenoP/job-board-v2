@@ -2,24 +2,29 @@
 import React, { useState, useEffect } from "react";
 import { userAuth } from "@/app/context/AuthContext";
 import LoadingSpinner from "../components/LoadingSpinner/LoadingSpinner";
-import { useRouter } from "next/navigation";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../firebase";
+import Footer from "../components/Footer";
 
 export default function userProfile() {
   const [loading, setLoading] = useState(true);
-  const { push } = useRouter();
   const { user, googleSignIn } = userAuth();
+  const [initialRender, setInitialRender] = useState(true);
 
   useEffect(() => {
-    const checkAuth = async () => {
-      let currentUser = await user;
-      if (currentUser !== null) {
-        console.log(currentUser);
-        setLoading(false);
+    const checkAuth = onAuthStateChanged(auth, (currentUser) => {
+      if (currentUser === null) {
+        console.log("no user");
+        googleSignIn();
       } else {
-        await googleSignIn();
+        console.log("there is a user");
+        setLoading(false);
       }
-    };
-    checkAuth();
+      setInitialRender(false);
+    });
+    if (!initialRender) {
+      checkAuth();
+    }
   }, [user]);
 
   return (
@@ -29,12 +34,13 @@ export default function userProfile() {
           <LoadingSpinner />
         </div>
       ) : (
-        <div className="profile__content h-screen w-screen bg-red-500 flex flex-col items-center ">
-          Welcome {user?.displayName}
-          <div className="chart__header h-[370px] w-11/12 bg-purple-400">
-            this will be some sort of chart
+        <>
+          <div className="min-h-screen min-w-screen flex flex-col justify-center items-center">
+            <div className="graph__part h-[350px] w-11/12 bg-red-500"></div>
+            <div className="flex-grow bg-orange-500 h-[500px] w-11/12"></div>
           </div>
-        </div>
+          <Footer />
+        </>
       )}
     </div>
   );

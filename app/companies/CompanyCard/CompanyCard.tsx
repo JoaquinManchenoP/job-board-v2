@@ -1,6 +1,5 @@
 import React from "react";
 import { AiFillTags } from "react-icons/ai";
-import { HiLocationMarker } from "react-icons/hi";
 import { BsPeopleFill } from "react-icons/bs";
 export default function CompanyCard({ company }) {
   console.log(company);
