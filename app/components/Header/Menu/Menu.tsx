@@ -3,7 +3,16 @@ import Link from "next/link";
 import { userAuth } from "@/app/context/AuthContext";
 
 export default function Menu() {
-  const { user, logOut, setMenuState } = userAuth();
+  const { user, logOut, setMenuState, googleSignIn } = userAuth();
+
+  const handleSignIn = async () => {
+    try {
+      await googleSignIn();
+    } catch (error) {
+      console.log(error);
+    }
+    setMenuState(false);
+  };
 
   const handleSignOut = async () => {
     try {
@@ -23,7 +32,7 @@ export default function Menu() {
               onClick={() => setMenuState(false)}
               className="home__option h-full w-4/5 flex items-center border-b border-gray-400"
             >
-              <Link href="/userProfile" className="profile">
+              <Link href="/pages/userProfile" className="profile">
                 Profile
               </Link>
             </div>
@@ -50,10 +59,8 @@ export default function Menu() {
             </div>
           ) : (
             <div className="companies__option h-full w-4/5  flex items-center">
-              <Link href={"/userProfile"}>
-                <button onClick={() => setMenuState(false)}>
-                  Register or Sign in
-                </button>
+              <Link href="/pages/userProfile">
+                <button onClick={handleSignIn}>Register or Sign in</button>
               </Link>
             </div>
           )}

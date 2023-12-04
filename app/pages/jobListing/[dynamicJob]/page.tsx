@@ -20,7 +20,6 @@ export default function jobListingPage() {
   return (
     <>
       <div className="job__listing screen">
-        <Header />
         <div className="listing__layout h-full w-screen bg-purple-400">
           <div className=" listing__header h-[250px] w-full bg-red-500 flex items-center justify-center">
             <JobHeader job={mockData} />
