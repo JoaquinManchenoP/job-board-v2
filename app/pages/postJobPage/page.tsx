@@ -1,7 +1,8 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import PageSpecificHeader from "@/app/components/Header/PageSpecificHeader/PageSpecificHeader";
 import { userAuth } from "../../context/AuthContext";
+import { addDataToFirestore } from "@/app/firebase";
 
 export default function PostJob() {
   const { user } = userAuth();
@@ -24,19 +25,18 @@ export default function PostJob() {
   };
 
   const handleSubmit = (e) => {
+    console.log(user.email);
     e.preventDefault();
-    console.log("Form Data:", formData);
-    console.log("some process that uploads it to the database");
-    console.log(user);
     setFormData({
       name: "",
-      email: "",
+      email: user.email,
       tel: "",
       companyName: "",
       companyWebsite: "",
       jobTitle: "",
       jobDescription: "",
     });
+    addDataToFirestore(formData);
   };
 
   return (
@@ -45,11 +45,11 @@ export default function PostJob() {
         <PageSpecificHeader pageTitle={"Post a job"} />
       </div>
       <div className="container mx-auto p-4">
-        <form onSubmit={handleSubmit}>
+        <form className="addJob" onSubmit={handleSubmit}>
           <div className="mb-4">
             <h2 className="text-lg font-semibold mb-2">Contact Details</h2>
             <label className="block mb-1" htmlFor="name">
-              Name:
+              Name of Contact:
             </label>
             <input
               className="border rounded w-full py-2 px-3"
@@ -60,7 +60,7 @@ export default function PostJob() {
               onChange={handleChange}
               required
             />
-            <label className="block mb-1" htmlFor="email">
+            {/* <label className="block mb-1" htmlFor="email">
               Email:
             </label>
             <input
@@ -71,7 +71,7 @@ export default function PostJob() {
               value={formData.email}
               onChange={handleChange}
               required
-            />
+            /> */}
             <label className="block mb-1" htmlFor="tel">
               Telephone Number:
             </label>
