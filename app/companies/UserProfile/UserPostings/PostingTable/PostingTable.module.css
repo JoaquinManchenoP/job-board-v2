@@ -1,0 +1,3 @@
+.tableBody > * {
+  margin-bottom: 10px; /* Add a 10px margin between rows */
+}

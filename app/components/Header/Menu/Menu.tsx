@@ -48,7 +48,10 @@ export default function Menu() {
           <div className="companies__option h-full w-4/5  flex items-center border-b border-gray-400">
             <Link href="/companies">companies</Link>
           </div>
-          <div className="companies__option h-full w-4/5  flex items-center border-b border-gray-400">
+          <div
+            onClick={() => setMenuState(false)}
+            className="companies__option h-full w-4/5  flex items-center border-b border-gray-400"
+          >
             <Link href="/pages/postJobPage">Post a Job</Link>
           </div>
           {user ? (
