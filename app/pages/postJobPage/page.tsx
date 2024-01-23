@@ -1,8 +1,10 @@
 "use client";
 import React, { useState, useRef } from "react";
 import PageSpecificHeader from "@/app/components/Header/PageSpecificHeader/PageSpecificHeader";
+import { userAuth } from "../../context/AuthContext";
 
 export default function PostJob() {
+  const { user } = userAuth();
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -25,6 +27,7 @@ export default function PostJob() {
     e.preventDefault();
     console.log("Form Data:", formData);
     console.log("some process that uploads it to the database");
+    console.log(user);
     setFormData({
       name: "",
       email: "",
