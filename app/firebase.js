@@ -4,6 +4,7 @@ import { initializeApp } from "firebase/app";
 // https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth } from "firebase/auth";
 import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
+import jobListing from "./components/FeaturedSection/jobListing/jobListing";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -43,7 +44,6 @@ getDocs(jobListingRef).then((snapshot) => {
   snapshot.forEach((doc) => {
     jobListings.push({ ...doc.data(), id: doc.id });
   });
-  console.log("jobListings:", jobListings);
 });
 
 //add documents

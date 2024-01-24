@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef, useEffect } from "react";
+import React, { useState } from "react";
 import PageSpecificHeader from "@/app/components/Header/PageSpecificHeader/PageSpecificHeader";
 import { userAuth } from "../../context/AuthContext";
 import { addDataToFirestore } from "@/app/firebase";
@@ -14,6 +14,7 @@ export default function PostJob() {
     companyWebsite: "",
     jobTitle: "",
     jobDescription: "",
+    userId: "",
   });
 
   const handleChange = (e) => {
@@ -25,18 +26,20 @@ export default function PostJob() {
   };
 
   const handleSubmit = (e) => {
-    console.log(user.email);
     e.preventDefault();
-    setFormData({
-      name: "",
-      email: user.email,
-      tel: "",
-      companyName: "",
-      companyWebsite: "",
-      jobTitle: "",
-      jobDescription: "",
-    });
-    addDataToFirestore(formData);
+    if (user.email) {
+      setFormData({
+        name: "",
+        email: user.email,
+        tel: "",
+        companyName: "",
+        companyWebsite: "",
+        jobTitle: "",
+        jobDescription: "",
+        userId: user.uid,
+      });
+      addDataToFirestore(formData);
+    }
   };
 
   return (
