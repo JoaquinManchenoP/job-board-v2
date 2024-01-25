@@ -28,18 +28,29 @@ export default function PostJob() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user.email) {
-      setFormData({
-        name: "",
+      const updatedFormData = {
+        name: formData.name,
         email: user.email,
-        tel: "",
-        companyName: "",
-        companyWebsite: "",
-        jobTitle: "",
-        jobDescription: "",
+        tel: formData.tel,
+        companyName: formData.companyName,
+        companyWebsite: formData.companyWebsite,
+        jobTitle: formData.jobTitle,
+        jobDescription: formData.jobDescription,
         userId: user.uid,
-      });
-      addDataToFirestore(formData);
+      };
+      setFormData(updatedFormData);
+      addDataToFirestore(updatedFormData);
     }
+    setFormData({
+      name: "",
+      email: "",
+      tel: "",
+      companyName: "",
+      companyWebsite: "",
+      jobTitle: "",
+      jobDescription: "",
+      userId: "",
+    });
   };
 
   return (

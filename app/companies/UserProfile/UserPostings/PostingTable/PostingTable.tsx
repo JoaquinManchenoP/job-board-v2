@@ -1,6 +1,7 @@
 import React from "react";
 import UserListingRow from "../UserListingRow";
-export default function PostingTable() {
+export default function PostingTable({ userJobs }) {
+  console.log(userJobs);
   return (
     <table className="w-11/12 border-separate border-spacing-y-3 ">
       <thead>
@@ -12,9 +13,9 @@ export default function PostingTable() {
         </tr>
       </thead>
       <tbody>
-        <UserListingRow />
-        <UserListingRow />
-        <UserListingRow />
+        {userJobs.map((job, idx) => (
+          <UserListingRow key={idx} jobData={job} />
+        ))}
       </tbody>
     </table>
   );
