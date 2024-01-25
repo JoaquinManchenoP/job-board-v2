@@ -2,8 +2,6 @@ import React from "react";
 import { FeaturedPageData } from "@/app/Data/FeaturedPage/FeaturedPageData";
 
 export default function JobCard({ position }) {
-  console.log(position);
-
   return (
     <div className="h-32 mobile:w-11/12 tablet:w-10/12 max-w-[700px] min-w-[400px]  bg-gray-100 rounded-md shadow-md flex">
       <div className="company_image h-full w-[130px] flex flex-col items-center justify-center">
@@ -15,10 +13,10 @@ export default function JobCard({ position }) {
         <div className="job__title">{position.jobTitle}</div>
         <div className="company__name font-bold">{position.companyName}</div>
         <div className="company__website">{position.companyWebsite}</div>
-        <div className="salary__range font-light">
+        {/* <div className="salary__range font-light">
           {position.salaryRange}
           {position.salarIn}
-        </div>
+        </div> */}
       </div>
     </div>
   );
