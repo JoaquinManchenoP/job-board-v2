@@ -37,15 +37,15 @@ export default function Home() {
   }
 
   return (
-    <main className="flex min-h-screen flex-col items-center ">
+    <main className="flex min-h-screen flex-col items-center">
       <div className="featured h-full w-full">
         <Featured />
       </div>
-      <div className="job__cards h-full w-full flex flex-col items-center justify-center space-y-5 pt-[120px]">
+      <div className="job__cards flex-grow w-full flex flex-col items-center justify-center space-y-5 pt-[120px]">
         {jobListings.map((job, index) => (
           <Link
             href={`/pages/jobListing/${job.id}`}
-            className="h-full w-full flex items-center justify-center"
+            className="w-full flex items-center justify-center"
             key={index}
           >
             <JobCard position={job} />
