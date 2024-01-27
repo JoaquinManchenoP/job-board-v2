@@ -7,17 +7,6 @@ import { usePathname } from "next/navigation";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
 
-const mockData = {
-  companyName: "Amazon",
-  positionTitle: "Software enginiurr",
-  positionLocation: "Berlin, Germany",
-  salaryRange: "120,000 - 145,000",
-  salarIn: "E",
-  companyLogo:
-    "https://seeklogo.com/images/R/rounded-design-company-logo-58FEBA6563-seeklogo.com.png",
-  jobId: "1",
-};
-
 export default function jobListingPage() {
   const [jobData, setJobData] = useState(null);
   const pathname = usePathname();
