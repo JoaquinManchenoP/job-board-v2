@@ -1,5 +1,4 @@
 import React from "react";
-import { FeaturedPageData } from "@/app/Data/FeaturedPage/FeaturedPageData";
 
 export default function JobCard({ position }) {
   return (

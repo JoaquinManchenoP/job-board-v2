@@ -13,6 +13,11 @@ export default function userProfile() {
   const { user, googleSignIn } = userAuth();
   const [loginAgain, setLoginAgain] = useState(false);
   const pathname = usePathname();
+  const [headerGraphData, setHeaderGraphData] = useState({
+    numberOfClicks: 0,
+  });
+
+  console.log("this is the number of clicks", headerGraphData);
 
   useEffect(() => {
     const checkUser = () => {
@@ -73,10 +78,10 @@ export default function userProfile() {
         <>
           <div className="min-h-screen min-w-screen flex flex-col justify-center items-center">
             <div className="graph__part h-[350px] w-11/12 bg-red-500 flex items-center justify-center">
-              <ProfileHeaderGraph />
+              <ProfileHeaderGraph headerData={headerGraphData} />
             </div>
             <div className="flex-grow bg-orange-500 h-[800px] w-11/12">
-              <PostingsSectionComponent />
+              <PostingsSectionComponent setHeaderGraph={setHeaderGraphData} />
             </div>
           </div>
           <Footer />

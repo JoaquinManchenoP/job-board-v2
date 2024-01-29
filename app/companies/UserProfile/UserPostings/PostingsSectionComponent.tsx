@@ -6,7 +6,7 @@ import { db } from "../../../firebase";
 import jobListing from "@/app/components/FeaturedSection/jobListing/jobListing";
 import { userAuth } from "@/app/context/AuthContext";
 
-export default function PostingsSectionComponent() {
+export default function PostingsSectionComponent({ setHeaderGraph }) {
   const [userJobs, setUserJobs] = useState([]);
   const { user } = userAuth();
 
@@ -41,7 +41,7 @@ export default function PostingsSectionComponent() {
     <div className="h-full w-full bg-red-200">
       <div className="section__title text-xl m-5">Your Postings</div>
       <div className="content__section flex item-center justify-center">
-        <PostingTable userJobs={userJobs} />
+        <PostingTable userJobs={userJobs} setHeaderGraph={setHeaderGraph} />
       </div>
     </div>
   );

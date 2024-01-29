@@ -2,11 +2,16 @@ import React, { useState } from "react";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { TiDelete } from "react-icons/ti";
-import Link from "next/link";
 
-export default function UserListingRow({ jobData }) {
+export default function UserListingRow({ jobData, setHeaderGraph }) {
   const [deleatedDocument, setDeleatedDocument] = useState(false);
-  console.log("this is loaded", jobData.id);
+
+  const handleListingClicked = () => {
+    console.log("this listing was jsut clicked");
+    setHeaderGraph({
+      numberOfClicks: 57,
+    });
+  };
 
   const deleteDocument = () => {
     const documentIdToDelete = jobData.id;
@@ -26,17 +31,19 @@ export default function UserListingRow({ jobData }) {
     return null;
   }
 
-  console.log(jobData);
   return (
-    <tr className="h-14 w-full border-t bg-green-200 shadow-2xl ">
+    <tr
+      onClick={handleListingClicked}
+      className="h-14 w-full border-t bg-green-200 shadow-2xl "
+    >
       <td className="h-[50px] w-2/5 bg-purple-300  ">
         <div className="flex h-full ">
           <div className="w-full h-full flex-grow bg-red-400 flex flex-col justify-center pl-3">
-            <Link href={`/pages/jobListing/${jobData.id}`}>
-              <div className="position__title text-md bg-green-400 ">
-                {jobData.jobTitle}
-              </div>
-            </Link>
+            {/* <Link href={`/pages/jobListing/${jobData.id}`}> */}
+            <div className="position__title text-md bg-green-400 ">
+              {jobData.jobTitle}
+            </div>
+            {/* </Link> */}
             <div className="date__posted text-xs">11/12/2024</div>
           </div>
           <div

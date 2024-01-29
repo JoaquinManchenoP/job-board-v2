@@ -1,13 +1,13 @@
 "use client";
 import JobCard from "./jobs/jobCard/JobCard";
 import Featured from "./components/FeaturedSection/Featured";
-import Header from "./components/Header/Header";
-import { FeaturedPageData } from "./Data/FeaturedPage/FeaturedPageData";
 import Link from "next/link";
 import Footer from "./components/Footer";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase";
 import { useState, useEffect } from "react";
+import { logEvent } from "firebase/analytics";
+import { analytics } from "./firebase";
 
 export default function Home() {
   const [jobListings, setJobListings] = useState([]);
@@ -36,6 +36,14 @@ export default function Home() {
     console.log(jobListings);
   }
 
+  const trackPostingClicked = () => {
+    console.log("trigger log evenet");
+    logEvent(analytics, "select_content", {
+      content_type: "button",
+      item_id: "submit_button",
+    });
+  };
+
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div className="featured h-full w-full">
@@ -47,6 +55,7 @@ export default function Home() {
             href={`/pages/jobListing/${job.id}`}
             className="w-full flex items-center justify-center"
             key={index}
+            onClick={trackPostingClicked}
           >
             <JobCard position={job} />
           </Link>

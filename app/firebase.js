@@ -5,6 +5,7 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
 import jobListing from "./components/FeaturedSection/jobListing/jobListing";
+import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -26,6 +27,8 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 //init services
 const db = getFirestore();
+
+const analytics = getAnalytics(app);
 //collection ref
 const userRef = collection(db, "users");
 
@@ -58,4 +61,5 @@ export const addDataToFirestore = async (formData) => {
 };
 
 export { db };
+export { analytics };
 export const auth = getAuth(app);
