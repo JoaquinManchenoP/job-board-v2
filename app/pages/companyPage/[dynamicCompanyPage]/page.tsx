@@ -5,7 +5,7 @@ import { CompanyData } from "@/app/Data/CompanyData/CompanyData";
 import Header from "@/app/components/Header/Header";
 import CompanyPageHeader from "@/app/companies/CompanyPageComponents/CompanyPageHeader";
 import Link from "next/link";
-import JobCard from "@/app/jobs/jobCard/JobCard";
+import JobCard from "@/app/dynamicJobCompnonents/jobCard/JobCard";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 

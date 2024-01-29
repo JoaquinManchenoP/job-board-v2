@@ -4,6 +4,8 @@ import { GiHamburgerMenu } from "react-icons/gi";
 import Menu from "./Menu/Menu";
 import Link from "next/link";
 import { userAuth } from "@/app/context/AuthContext";
+import Image from "next/image";
+import logo from "../../images/logo.png";
 
 export default function Header() {
   const { menuState, setMenuState } = userAuth();
@@ -16,17 +18,20 @@ export default function Header() {
     }
     console.log(menuState);
   };
+
   return (
     <>
-      <div className="h-[50px] w-full bg-red-700 flex justify-between ">
-        <div className="logo h-full w-1/4 bg-blue-500 flex items-center justify-center">
-          <Link href="/">Logo</Link>
-        </div>
+      <div className="h-[75px] w-ful flex justify-between ">
+        <Link href="/" className="h-full w-full">
+          <div className="logo h-full w-1/4  flex items-center justify-center mt-1">
+            <Image src={logo} alt="My Image" className="h-16 w-20" />
+          </div>
+        </Link>
         <div
-          className="menu h-full w-1/4 bg-gray-200 flex items-center justify-center "
+          className="menu h-full w-1/4  flex items-center justify-center "
           onClick={handleMenuState}
         >
-          <GiHamburgerMenu className="text-xl" />
+          <GiHamburgerMenu className="text-2xl" />
         </div>
       </div>
       {menuState ? <Menu /> : <span></span>}

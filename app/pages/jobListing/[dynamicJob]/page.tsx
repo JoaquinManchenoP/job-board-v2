@@ -1,7 +1,7 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import JobHeader from "@/app/jobs/jobHeader/JobHeader";
-import FullJobDescription from "@/app/jobs/FullJobDescription/FullJobDescription";
+import JobHeader from "@/app/dynamicJobCompnonents/jobHeader/JobHeader";
+import FullJobDescription from "@/app/dynamicJobCompnonents/FullJobDescription/FullJobDescription";
 import Footer from "@/app/components/Footer";
 import { usePathname } from "next/navigation";
 import { doc, getDoc } from "firebase/firestore";
@@ -36,7 +36,7 @@ export default function jobListingPage() {
   return (
     <>
       <div className="job__listing screen">
-        <div className="listing__layout h-full w-screen bg-purple-400">
+        <div className="listing__layout h-full w-screen ">
           <div className=" listing__header h-[250px] w-full bg-red-500 flex items-center justify-center">
             {!jobData ? (
               <>

@@ -38,7 +38,7 @@ export default function PostingsSectionComponent({ setHeaderGraph }) {
   }, [user]);
 
   return (
-    <div className="h-full w-full bg-red-200">
+    <div className="h-full w-full">
       <div className="section__title text-xl m-5">Your Postings</div>
       <div className="content__section flex item-center justify-center">
         <PostingTable userJobs={userJobs} setHeaderGraph={setHeaderGraph} />

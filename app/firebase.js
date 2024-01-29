@@ -28,7 +28,7 @@ const app = initializeApp(firebaseConfig);
 //init services
 const db = getFirestore();
 
-const analytics = getAnalytics(app);
+// const analytics = getAnalytics(app);
 //collection ref
 const userRef = collection(db, "users");
 
@@ -61,5 +61,5 @@ export const addDataToFirestore = async (formData) => {
 };
 
 export { db };
-export { analytics };
+// export { analytics };
 export const auth = getAuth(app);

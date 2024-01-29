@@ -80,11 +80,13 @@ export default function userProfile() {
             <div className="graph__part h-[350px] w-11/12 bg-red-500 flex items-center justify-center">
               <ProfileHeaderGraph headerData={headerGraphData} />
             </div>
-            <div className="flex-grow bg-orange-500 h-[800px] w-11/12">
+            <div className="flex-grow h-[800px] w-11/12">
               <PostingsSectionComponent setHeaderGraph={setHeaderGraphData} />
             </div>
           </div>
-          <Footer />
+          <div className="footer pt-20">
+            <Footer />
+          </div>
         </>
       )}
     </div>

@@ -34,23 +34,21 @@ export default function UserListingRow({ jobData, setHeaderGraph }) {
   return (
     <tr
       onClick={handleListingClicked}
-      className="h-14 w-full border-t bg-green-200 shadow-2xl "
+      className="h-14 w-full border-t bg-gray-200 shadow-2xl "
     >
-      <td className="h-[50px] w-2/5 bg-purple-300  ">
+      <td className="h-[50px] w-2/5  ">
         <div className="flex h-full ">
-          <div className="w-full h-full flex-grow bg-red-400 flex flex-col justify-center pl-3">
+          <div className="w-full h-full flex-grow flex flex-col justify-center pl-3">
             {/* <Link href={`/pages/jobListing/${jobData.id}`}> */}
-            <div className="position__title text-md bg-green-400 ">
-              {jobData.jobTitle}
-            </div>
+            <div className="position__title text-md ">{jobData.jobTitle}</div>
             {/* </Link> */}
             <div className="date__posted text-xs">11/12/2024</div>
           </div>
           <div
-            className="w-2/12 bg-orange-500 flex items-center justify-center"
+            className="w-2/12 h-full bg-red-500 flex items-center justify-center rounded-md cursor-pointer "
             onClick={deleteDocument}
           >
-            <TiDelete className="text-2xl" />
+            <TiDelete className="text-4xl text-white" />
           </div>
         </div>
       </td>
