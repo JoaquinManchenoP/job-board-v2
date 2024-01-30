@@ -7,7 +7,7 @@ export default function UserListingRow({ jobData, setHeaderGraph }) {
   const [deleatedDocument, setDeleatedDocument] = useState(false);
 
   const handleListingClicked = () => {
-    console.log("this listing was jsut clicked");
+    console.log("this listing was just clicked");
     setHeaderGraph({
       numberOfClicks: 57,
     });
@@ -40,7 +40,7 @@ export default function UserListingRow({ jobData, setHeaderGraph }) {
         <div className="flex h-full ">
           <div className="w-full h-full flex-grow flex flex-col justify-center pl-3">
             {/* <Link href={`/pages/jobListing/${jobData.id}`}> */}
-            <div className="position__title text-md ">{jobData.jobTitle}</div>
+            <div className="position__title text-md  ">{jobData.jobTitle}</div>
             {/* </Link> */}
             <div className="date__posted text-xs">11/12/2024</div>
           </div>

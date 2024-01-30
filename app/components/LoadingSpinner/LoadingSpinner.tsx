@@ -22,7 +22,7 @@ export default function LoadingSpinner() {
         </svg>
       </div>
       <div className="text pt-2">
-        <span className="font-bold">Loading...</span>
+        <span className=" text-white">Loading...</span>
       </div>
     </div>
   );

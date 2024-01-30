@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import PageSpecificHeader from "@/app/components/Header/PageSpecificHeader/PageSpecificHeader";
 import { userAuth } from "../../context/AuthContext";
 import { addDataToFirestore } from "@/app/firebase";
+import Footer from "@/app/components/Footer";
 
 export default function PostJob() {
   const { user } = userAuth();
@@ -162,6 +163,9 @@ export default function PostJob() {
             Submit
           </button>
         </form>
+      </div>
+      <div className="footer pt-20">
+        <Footer />
       </div>
     </>
   );

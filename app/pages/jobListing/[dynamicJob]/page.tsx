@@ -6,6 +6,7 @@ import Footer from "@/app/components/Footer";
 import { usePathname } from "next/navigation";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
+import LoadingSpinner from "@/app/components/LoadingSpinner/LoadingSpinner";
 
 export default function jobListingPage() {
   const [jobData, setJobData] = useState(null);
@@ -40,7 +41,9 @@ export default function jobListingPage() {
           <div className=" listing__header h-[250px] w-full bg-red-500 flex items-center justify-center">
             {!jobData ? (
               <>
-                <p>Loading...</p>
+                <div className="spinner h-[120px] w-[180px] bg-orange-300 flex items-center justify-center">
+                  <LoadingSpinner />
+                </div>
                 {/* set a load spinner here */}
               </>
             ) : (
@@ -49,7 +52,9 @@ export default function jobListingPage() {
           </div>
           <div className="job__description h-[600px] w-full  flex items-center justify-center">
             {!jobData ? (
-              <p>Loading...</p>
+              <div className="spinner h-[120px] w-[180px] bg-orange-300 flex items-center justify-center">
+                <LoadingSpinner />
+              </div>
             ) : (
               <FullJobDescription jobDescription={jobData.jobDescription} />
             )}
