@@ -16,6 +16,7 @@ export default function PostJob() {
     jobTitle: "",
     jobDescription: "",
     userId: "",
+    currentDate: "",
   });
 
   const handleChange = (e) => {
@@ -29,6 +30,7 @@ export default function PostJob() {
   const handleSubmit = (e) => {
     e.preventDefault();
     if (user.email) {
+      const currentDate = new Date().toISOString().split("T")[0];
       const updatedFormData = {
         name: formData.name,
         email: user.email,
@@ -38,6 +40,7 @@ export default function PostJob() {
         jobTitle: formData.jobTitle,
         jobDescription: formData.jobDescription,
         userId: user.uid,
+        currentDate: currentDate,
       };
       setFormData(updatedFormData);
       addDataToFirestore(updatedFormData);
@@ -51,6 +54,7 @@ export default function PostJob() {
       jobTitle: "",
       jobDescription: "",
       userId: "",
+      currentDate: "",
     });
   };
 

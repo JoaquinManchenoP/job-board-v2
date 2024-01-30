@@ -19,11 +19,11 @@ export default function FeaturedJobCard() {
         </div>
         <div className="right__side h-full mobile:w-2/3 tablet:w-full space-y-2 text-sm flex flex-col justify-center">
           <div className="job__title font-bold text-lg">
-            <span>Software engineer</span>
+            <span>Tech Bridge Germnay</span>
           </div>
           <div className="job__description w-full  text-sm overflow-hidden pr-12">
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-            a eius, dolor quia commodi labore!
+            Connecting Talent Across Borders: Your Gateway to English-speaking
+            Tech Careers in Germany !
           </div>
         </div>
       </div>

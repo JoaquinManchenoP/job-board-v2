@@ -50,9 +50,9 @@ export default function jobListingPage() {
               <JobHeader jobData={jobData} />
             )}
           </div>
-          <div className="job__description h-[600px] w-full  flex items-center justify-center">
+          <div className="job__description h-[600px] w-full  flex items-center justify-center mt-10 ">
             {!jobData ? (
-              <div className="spinner h-[120px] w-[180px] bg-orange-300 flex items-center justify-center">
+              <div className="spinner h-[120px] w-[180px] flex items-center justify-center">
                 <LoadingSpinner />
               </div>
             ) : (

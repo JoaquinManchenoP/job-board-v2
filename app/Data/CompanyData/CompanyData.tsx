@@ -5,38 +5,8 @@ export const CompanyData = [
     companyShortMessage: "Dedicated professionals",
     numberOfEmployees: 500,
     companyId: "1",
-    companyJobs: [
-      {
-        employerName: "Adidas",
-        positionTitle: "Software enginiurr",
-        positionLocation: "Berlin, Germany",
-        salaryRange: "120,000 - 145,000",
-        salarIn: "E",
-        companyLogo:
-          "https://seeklogo.com/images/R/rounded-design-company-logo-58FEBA6563-seeklogo.com.png",
-        jobId: "1",
-      },
-      {
-        employerName: "Adidas",
-        positionTitle: "Software enginiurr",
-        positionLocation: "Berlin, Germany",
-        salaryRange: "120,000 - 145,000",
-        salarIn: "E",
-        companyLogo:
-          "https://seeklogo.com/images/R/rounded-design-company-logo-58FEBA6563-seeklogo.com.png",
-        jobId: "2",
-      },
-      {
-        employerName: "Adidas",
-        positionTitle: "Software enginiurr",
-        positionLocation: "Berlin, Germany",
-        salaryRange: "120,000 - 145,000",
-        salarIn: "E",
-        companyLogo:
-          "https://seeklogo.com/images/R/rounded-design-company-logo-58FEBA6563-seeklogo.com.png",
-        jobId: "3",
-      },
-    ],
+    companyLogo:
+      "https://images.unsplash.com/photo-1511746315387-c4a76990fdce?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8YWRpZGFzfGVufDB8fDB8fHww",
   },
   {
     companyName: "Nike",
@@ -44,38 +14,8 @@ export const CompanyData = [
     companyShortMessage: "Technology and colaboration",
     numberOfEmployees: 420,
     companyId: "2",
-    companyJobs: [
-      {
-        employerName: "Adidas",
-        positionTitle: "Software enginiurr",
-        positionLocation: "Berlin, Germany",
-        salaryRange: "120,000 - 145,000",
-        salarIn: "E",
-        companyLogo:
-          "https://seeklogo.com/images/R/rounded-design-company-logo-58FEBA6563-seeklogo.com.png",
-        jobId: "1",
-      },
-      {
-        employerName: "Adidas",
-        positionTitle: "Software enginiurr",
-        positionLocation: "Berlin, Germany",
-        salaryRange: "120,000 - 145,000",
-        salarIn: "E",
-        companyLogo:
-          "https://seeklogo.com/images/R/rounded-design-company-logo-58FEBA6563-seeklogo.com.png",
-        jobId: "2",
-      },
-      {
-        employerName: "Adidas",
-        positionTitle: "Software enginiurr",
-        positionLocation: "Berlin, Germany",
-        salaryRange: "120,000 - 145,000",
-        salarIn: "E",
-        companyLogo:
-          "https://seeklogo.com/images/R/rounded-design-company-logo-58FEBA6563-seeklogo.com.png",
-        jobId: "3",
-      },
-    ],
+    companyLogo:
+      "https://images.unsplash.com/photo-1579298245158-33e8f568f7d3?q=80&w=1190&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
   },
   {
     companyName: "Activision",
@@ -83,37 +23,7 @@ export const CompanyData = [
     companyShortMessage: "Make cool games",
     numberOfEmployees: 720,
     companyId: "3",
-    companyJobs: [
-      {
-        employerName: "Activision",
-        positionTitle: "Gamed Designer",
-        positionLocation: "Berlin, Germany",
-        salaryRange: "120,000 - 145,000",
-        salarIn: "E",
-        companyLogo:
-          "https://seeklogo.com/images/R/rounded-design-company-logo-58FEBA6563-seeklogo.com.png",
-        jobId: "1",
-      },
-      {
-        employerName: "Activision",
-        positionTitle: "Software enginiurr",
-        positionLocation: "Paris, France",
-        salaryRange: "120,000 - 145,000",
-        salarIn: "E",
-        companyLogo:
-          "https://seeklogo.com/images/R/rounded-design-company-logo-58FEBA6563-seeklogo.com.png",
-        jobId: "2",
-      },
-      {
-        employerName: "Activision",
-        positionTitle: "Software enginiurr",
-        positionLocation: "Berlin, Germany",
-        salaryRange: "120,000 - 145,000",
-        salarIn: "E",
-        companyLogo:
-          "https://seeklogo.com/images/R/rounded-design-company-logo-58FEBA6563-seeklogo.com.png",
-        jobId: "3",
-      },
-    ],
+    companyLogo:
+      "https://images.unsplash.com/photo-1616757857818-5c6eea38ee17?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTJ8fGNhbGwlMjBvZiUyMGR1dHl8ZW58MHx8MHx8fDA%3D",
   },
 ];

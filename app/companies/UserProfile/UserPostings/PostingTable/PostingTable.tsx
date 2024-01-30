@@ -5,7 +5,7 @@ export default function PostingTable({ userJobs, setHeaderGraph }) {
     <table className="w-full border-separate border-spacing-y-3 ">
       <thead>
         <tr className="bg-gray-100">
-          <th className="w-1/3">Listing</th>
+          <th className="w-1/3">Postings</th>
           <th className="text-right">Clicks</th>
           <th className="text-right">Applied</th>
           <th className="text-right">Viewed</th>

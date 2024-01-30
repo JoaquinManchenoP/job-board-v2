@@ -7,6 +7,7 @@ import PostingsSectionComponent from "../../companies/UserProfile/UserPostings/P
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 import Footer from "../../components/Footer";
+import PageSpecificHeader from "@/app/components/Header/PageSpecificHeader/PageSpecificHeader";
 
 export default function userProfile() {
   const [loading, setLoading] = useState(true);
@@ -63,7 +64,7 @@ export default function userProfile() {
                   </button>
                 </Link>
                 <button
-                  className=" w-[100px] bg-gray-500 hover:bg-gray-200 text-white py-2 px-4 border border-blue-700 rounded"
+                  className=" w-[100px] bg-gray-500 hover:bg-gray-200 text-white py-2 px-4 border border-gray-500 rounded"
                   onClick={handleLoginAgain}
                 >
                   Login
@@ -77,14 +78,14 @@ export default function userProfile() {
       ) : (
         <>
           <div className="min-h-screen min-w-screen flex flex-col justify-center items-center">
-            <div className="graph__part h-[350px] w-11/12 bg-red-500 flex items-center justify-center">
-              <ProfileHeaderGraph headerData={headerGraphData} />
+            <div className="graph__part h-[350px] w-full bg-red-500 flex items-center justify-center">
+              <PageSpecificHeader pageTitle={"Profile"} />
             </div>
             <div className="flex-grow h-[800px] w-11/12">
               <PostingsSectionComponent setHeaderGraph={setHeaderGraphData} />
             </div>
           </div>
-          <div className="footer pt-20">
+          <div className="footer pt-10">
             <Footer />
           </div>
         </>

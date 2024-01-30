@@ -1,15 +1,16 @@
 import React from "react";
 import { AiFillTags } from "react-icons/ai";
 import { BsPeopleFill } from "react-icons/bs";
+import Image from "next/image";
 export default function CompanyCard({ company }) {
-  console.log(company);
+  console.log(company.companyLogo);
   return (
-    <div className="h-[500px] mobile:w-11/12 tablet:w-11/12 max-w-[700px]  bg-gray-100 rounded-md shadow-md flex flex-col">
+    <div className="h-[500px] mobile:w-11/12 tablet:w-11/12 max-w-[700px]  bg-white rounded-md shadow-lg flex flex-col">
       <div className="image h-1/2 w-full">
         <img
           className="company__image h-full w-full object-cover"
-          src="https://www.bobbitt.com/wp-content/uploads/2018/07/6-Teamwork-Skills-Every-Company-Should-Cultivate.jpg"
-        ></img>
+          src={company.companyLogo}
+        />
       </div>
       <div className="company__description  h-1/2 w-full flex flex-col items-center justify-center">
         <div className="company__info__container h-[160px] w-6/12 flex flex-col justify-center space-y-2 text-sm ">

@@ -42,7 +42,7 @@ export default function UserListingRow({ jobData, setHeaderGraph }) {
             {/* <Link href={`/pages/jobListing/${jobData.id}`}> */}
             <div className="position__title text-md  ">{jobData.jobTitle}</div>
             {/* </Link> */}
-            <div className="date__posted text-xs">11/12/2024</div>
+            <div className="date__posted text-xs">{jobData.currentDate}</div>
           </div>
           <div
             className="w-2/12 h-full bg-red-500 flex items-center justify-center rounded-md cursor-pointer "
