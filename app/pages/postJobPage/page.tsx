@@ -4,8 +4,11 @@ import PageSpecificHeader from "@/app/components/Header/PageSpecificHeader/PageS
 import { userAuth } from "../../context/AuthContext";
 import { addDataToFirestore } from "@/app/firebase";
 import Footer from "@/app/components/Footer";
+import { storage } from "@/app/firebase";
+import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 
 export default function PostJob() {
+  const [image, setImage] = useState(null);
   const { user } = userAuth();
   const [formData, setFormData] = useState({
     name: "",
@@ -17,6 +20,7 @@ export default function PostJob() {
     jobDescription: "",
     userId: "",
     currentDate: "",
+    imageUrl: "",
   });
 
   const handleChange = (e) => {
@@ -27,10 +31,14 @@ export default function PostJob() {
     }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (user.email) {
       const currentDate = new Date().toISOString().split("T")[0];
+      const imageRef = ref(storage, `images/${image.name}`);
+      const snapshot = await uploadBytes(imageRef, image);
+      const imageUrl = await getDownloadURL(snapshot.ref);
+
       const updatedFormData = {
         name: formData.name,
         email: user.email,
@@ -41,6 +49,7 @@ export default function PostJob() {
         jobDescription: formData.jobDescription,
         userId: user.uid,
         currentDate: currentDate,
+        imageUrl: imageUrl,
       };
       setFormData(updatedFormData);
       addDataToFirestore(updatedFormData);
@@ -55,6 +64,7 @@ export default function PostJob() {
       jobDescription: "",
       userId: "",
       currentDate: "",
+      imageUrl: "",
     });
   };
 
@@ -79,18 +89,6 @@ export default function PostJob() {
               onChange={handleChange}
               required
             />
-            {/* <label className="block mb-1" htmlFor="email">
-              Email:
-            </label>
-            <input
-              className="border rounded w-full py-2 px-3"
-              type="email"
-              id="email"
-              name="email"
-              value={formData.email}
-              onChange={handleChange}
-              required
-            /> */}
             <label className="block mb-1" htmlFor="tel">
               Telephone Number:
             </label>
@@ -158,6 +156,17 @@ export default function PostJob() {
               onChange={handleChange}
               required
             ></textarea>
+            <div className="mb-4">
+              <label className="block mb-1" htmlFor="image">
+                Upload Image:
+              </label>
+              <input
+                className="border rounded w-full py-2 px-3"
+                type="file"
+                id="image"
+                onChange={(e) => setImage(e.target.files[0])}
+              />
+            </div>
           </div>
 
           <button

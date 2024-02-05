@@ -1,7 +1,6 @@
 import React from "react";
 import { AiFillTags } from "react-icons/ai";
-import { BsPeopleFill } from "react-icons/bs";
-import Image from "next/image";
+
 export default function CompanyCard({ company }) {
   console.log(company.companyLogo);
   return (

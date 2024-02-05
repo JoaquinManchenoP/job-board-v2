@@ -14,7 +14,7 @@ export default function FeaturedJobCard() {
       <div className="company__description  h-2/5 w-full flex  items-center">
         <div className="left__side h-full min-w-[160px] mobile:w-1/3 tablet:max-w-[200px] flex items-center justify-center">
           <div className="image h-20 w-20 bg-green-400 rounded-full">
-            <Image src={logo} />
+            <Image src={logo} alt="image" />
           </div>
         </div>
         <div className="right__side h-full mobile:w-2/3 tablet:w-full space-y-2 text-sm flex flex-col justify-center">
