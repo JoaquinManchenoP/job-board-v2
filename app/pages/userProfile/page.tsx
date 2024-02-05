@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from "react";
 import { userAuth } from "@/app/context/AuthContext";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
-import ProfileHeaderGraph from "../../companies/UserProfile/ProfileHeaderGraph";
 import PostingsSectionComponent from "../../companies/UserProfile/UserPostings/PostingsSectionComponent";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
@@ -29,7 +28,7 @@ export default function userProfile() {
         setLoading(true);
         console.log("No user found");
         setTimeout(() => {
-          if (pathname === "/pages/userProfile") {
+          if (pathname === "/pages/postJobPage") {
             setTimeout(() => {
               console.log("open the login pop up again");
               setLoginAgain(true);

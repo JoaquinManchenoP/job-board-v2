@@ -1,14 +1,8 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
 import { getAuth } from "firebase/auth";
 import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
-import jobListing from "./components/FeaturedSection/jobListing/jobListing";
-import { getAnalytics } from "firebase/analytics";
 import { getStorage } from "firebase/storage";
 
-// Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyDaHxei2FdLMQunTPtC8ly0uAKOU2SHs5w",
   authDomain: "capstone-1532a.firebaseapp.com",
@@ -16,23 +10,14 @@ const firebaseConfig = {
   storageBucket: "capstone-1532a.appspot.com",
   messagingSenderId: "249169885639",
   appId: "1:249169885639:web:8c2b235dcb601de245c1e2",
-  // apiKey: "AIzaSyD6bFdzSH1wLOKvRiDjgdzSVbauDjXPfF0",
-  // authDomain: "job-board-v2-3154d.firebaseapp.com",
-  // projectId: "job-board-v2-3154d",
-  // storageBucket: "job-board-v2-3154d.appspot.com",
-  // messagingSenderId: "215649528605",
-  // appId: "1:215649528605:web:0b603ce2458c58e3734ff4",
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
-//init services
+
 const db = getFirestore();
 
 const storage = getStorage(app);
 
-// const analytics = getAnalytics(app);
-//collection ref
 const userRef = collection(db, "users");
 
 getDocs(userRef).then((snapshot) => {
@@ -52,8 +37,6 @@ getDocs(jobListingRef).then((snapshot) => {
   });
 });
 
-//add documents
-
 export const addDataToFirestore = async (formData) => {
   try {
     const docRef = await addDoc(collection(db, "jobPostings"), formData);
@@ -64,5 +47,4 @@ export const addDataToFirestore = async (formData) => {
 };
 
 export { db, storage };
-// export { analytics };
 export const auth = getAuth(app);
