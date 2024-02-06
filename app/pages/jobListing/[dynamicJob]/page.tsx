@@ -1,12 +1,12 @@
 "use client";
 import React, { useEffect, useState } from "react";
-import JobHeader from "@/app/dynamicJobCompnonents/jobHeader/JobHeader";
 import FullJobDescription from "@/app/dynamicJobCompnonents/FullJobDescription/FullJobDescription";
 import Footer from "@/app/components/Footer";
 import { usePathname } from "next/navigation";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
 import LoadingSpinner from "@/app/components/LoadingSpinner/LoadingSpinner";
+import JobListingPageHeader from "@/app/components/JobListingPageComponents/JobListingPageHeader";
 
 export default function jobListingPage() {
   const [jobData, setJobData] = useState(null);
@@ -38,7 +38,7 @@ export default function jobListingPage() {
     <>
       <div className="job__listing screen">
         <div className="listing__layout h-full w-screen ">
-          <div className=" listing__header h-[250px] w-full bg-red-500 flex items-center justify-center">
+          <div className=" listing__header h-[300px] w-full bg-red-500 flex items-center justify-center">
             {!jobData ? (
               <>
                 <div className="spinner h-[120px] w-[180px] flex items-center justify-center">
@@ -46,7 +46,7 @@ export default function jobListingPage() {
                 </div>
               </>
             ) : (
-              <JobHeader jobData={jobData} />
+              <JobListingPageHeader jobData={jobData} />
             )}
           </div>
           <div className="job__description h-[600px] w-full  flex items-center justify-center mt-10 ">
