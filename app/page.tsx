@@ -36,14 +36,6 @@ export default function Home() {
     console.log(jobListings);
   }
 
-  // const trackPostingClicked = () => {
-  //   console.log("trigger log evenet");
-  //   logEvent(analytics, "select_content", {
-  //     content_type: "button",
-  //     item_id: "submit_button",
-  //   });
-  // };
-
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div className="featured h-full w-full">
