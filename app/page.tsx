@@ -6,8 +6,6 @@ import Footer from "./components/Footer";
 import { collection, getDocs } from "firebase/firestore";
 import { db } from "./firebase";
 import { useState, useEffect } from "react";
-import { logEvent } from "firebase/analytics";
-import { analytics } from "./firebase";
 
 export default function Home() {
   const [jobListings, setJobListings] = useState([]);
@@ -21,9 +19,9 @@ export default function Home() {
         snapshot.forEach((doc) => {
           jobListingsData.push({ ...doc.data(), id: doc.id });
         });
-        // Set the jobListings data in the state
+
         setJobListings(jobListingsData);
-        // Log the data after it has been updated
+
         console.log("These are all the job listing", jobListingsData);
       } catch (error) {
         console.error("Error fetching job listings:", error);

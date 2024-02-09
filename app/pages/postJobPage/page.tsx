@@ -12,8 +12,7 @@ import Link from "next/link";
 
 export default function PostJob() {
   const pathname = usePathname();
-  //still need to figure out the image upload issue
-  const [image, setImage] = useState(null);
+  const [isSliderDisabled, setIsSliderDisabled] = useState(false);
   const [loading, setLoading] = useState(true);
   const { user, googleSignIn } = userAuth();
   const [loginAgain, setLoginAgain] = useState(false);
@@ -27,7 +26,7 @@ export default function PostJob() {
     jobDescription: "",
     userId: "",
     currentDate: "",
-    imageUrl: "",
+    salaryRange: 0,
   });
 
   useEffect(() => {
@@ -69,9 +68,6 @@ export default function PostJob() {
     e.preventDefault();
     if (user.email) {
       const currentDate = new Date().toISOString().split("T")[0];
-      const imageRef = ref(storage, `images/${image.name}`);
-      const snapshot = await uploadBytes(imageRef, image);
-      const imageUrl = await getDownloadURL(snapshot.ref);
 
       const updatedFormData = {
         name: formData.name,
@@ -83,9 +79,10 @@ export default function PostJob() {
         jobDescription: formData.jobDescription,
         userId: user.uid,
         currentDate: currentDate,
-        imageUrl: imageUrl,
+        salaryRange: formData.salaryRange,
       };
       setFormData(updatedFormData);
+      console.log(updatedFormData);
       addDataToFirestore(updatedFormData);
     }
     setFormData({
@@ -98,7 +95,7 @@ export default function PostJob() {
       jobDescription: "",
       userId: "",
       currentDate: "",
-      imageUrl: "",
+      salaryRange: 0,
     });
   };
 
@@ -218,16 +215,35 @@ export default function PostJob() {
                   onChange={handleChange}
                   required
                 ></textarea>
-                <div className="mb-4">
-                  <label className="block mb-1" htmlFor="image">
-                    Upload Image:
+                <div className="mb-4 ">
+                  <h2 className="text-lg font-semibold mb-2">Salary Range</h2>
+                  <label className="block mb-1" htmlFor="salaryRange">
+                    Select Salary Range:
                   </label>
                   <input
-                    className="border rounded w-full py-2 px-3"
-                    type="file"
-                    id="image"
-                    onChange={(e) => setImage(e.target.files[0])}
+                    className="border rounded w-3/6 cursor-pointer ${!isSliderEnabled ? 'bg-gray-200' : 'bg-green-500'} "
+                    type="range"
+                    disabled={isSliderDisabled}
+                    id="salaryRange"
+                    name="salaryRange"
+                    min="10000"
+                    max="500000"
+                    value={!isSliderDisabled ? formData.salaryRange : 0}
+                    onChange={handleChange}
+                    required
                   />
+                  <div className="text-center">
+                    ${formData.salaryRange || 75000}
+                  </div>
+                </div>
+                <div className="flex items-center space-x-4">
+                  <input
+                    type="checkbox"
+                    checked={isSliderDisabled}
+                    onChange={(e) => setIsSliderDisabled(e.target.checked)}
+                    className="toggle-checkbox" // Add any required Tailwind classes here
+                  />
+                  <span>Skip Salary</span>
                 </div>
               </div>
 

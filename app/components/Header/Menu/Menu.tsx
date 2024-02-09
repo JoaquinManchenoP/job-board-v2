@@ -65,7 +65,7 @@ export default function Menu() {
           ) : (
             <div className="companies__option h-full w-4/5  flex items-center">
               <Link href="/pages/userProfile">
-                <button onClick={handleSignIn}>Register or Sign in</button>
+                <button onClick={handleSignIn}>Sign in</button>
               </Link>
             </div>
           )}
