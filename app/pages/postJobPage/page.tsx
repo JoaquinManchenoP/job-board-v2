@@ -4,11 +4,10 @@ import PageSpecificHeader from "@/app/components/Header/PageSpecificHeader/PageS
 import { userAuth } from "../../context/AuthContext";
 import { addDataToFirestore } from "@/app/firebase";
 import Footer from "@/app/components/Footer";
-import { storage } from "@/app/firebase";
-import { ref, uploadBytes, getDownloadURL } from "firebase/storage";
 import { usePathname } from "next/navigation";
 import LoadingSpinner from "@/app/components/LoadingSpinner/LoadingSpinner";
 import Link from "next/link";
+import { countryData } from "./countryData/countryData";
 
 export default function PostJob() {
   const pathname = usePathname();
@@ -16,6 +15,9 @@ export default function PostJob() {
   const [loading, setLoading] = useState(true);
   const { user, googleSignIn } = userAuth();
   const [loginAgain, setLoginAgain] = useState(false);
+  const [selectedCountry, setSelectedCountry] = useState("");
+  const [selectedCity, setSelectedCity] = useState("");
+  const [cities, setCities] = useState([]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -27,6 +29,8 @@ export default function PostJob() {
     userId: "",
     currentDate: "",
     salaryRange: 0,
+    positionCountry: "",
+    positionCity: "",
   });
 
   useEffect(() => {
@@ -64,6 +68,31 @@ export default function PostJob() {
     }));
   };
 
+  const handleCountryChange = (e) => {
+    const newCountry = e.target.value;
+    setSelectedCountry(newCountry); // Update local UI state
+    setCities(newCountry ? countryData[newCountry] : []); // Update cities based on the selected country
+    setSelectedCity(""); // Reset city selection
+
+    // Update formData for submission
+    setFormData((prevData) => ({
+      ...prevData,
+      positionCountry: newCountry,
+      positionCity: "", // Reset city in formData as well
+    }));
+  };
+
+  const handleCityChange = (e) => {
+    const newCity = e.target.value;
+    setSelectedCity(newCity); // Update local UI state if necessary
+
+    // Update formData for submission
+    setFormData((prevData) => ({
+      ...prevData,
+      positionCity: newCity,
+    }));
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (user.email) {
@@ -80,6 +109,8 @@ export default function PostJob() {
         userId: user.uid,
         currentDate: currentDate,
         salaryRange: formData.salaryRange,
+        positionCountry: selectedCountry,
+        positionCity: selectedCity,
       };
       setFormData(updatedFormData);
       console.log(updatedFormData);
@@ -96,6 +127,8 @@ export default function PostJob() {
       userId: "",
       currentDate: "",
       salaryRange: 0,
+      positionCountry: "",
+      positionCity: "",
     });
   };
 
@@ -161,7 +194,6 @@ export default function PostJob() {
                   required
                 />
               </div>
-
               <div className="mb-4">
                 <h2 className="text-lg font-semibold mb-2">Company Details</h2>
                 <label className="block mb-1" htmlFor="companyName">
@@ -189,7 +221,6 @@ export default function PostJob() {
                   required
                 />
               </div>
-
               <div>
                 <h2 className="text-lg font-semibold mb-2">Job Details</h2>
                 <label className="block mb-1" htmlFor="jobTitle">
@@ -215,44 +246,98 @@ export default function PostJob() {
                   onChange={handleChange}
                   required
                 ></textarea>
-                <div className="mb-4 ">
-                  <h2 className="text-lg font-semibold mb-2">Salary Range</h2>
-                  <label className="block mb-1" htmlFor="salaryRange">
-                    Select Salary Range:
-                  </label>
-                  <input
-                    className="border rounded w-3/6 cursor-pointer ${!isSliderEnabled ? 'bg-gray-200' : 'bg-green-500'} "
-                    type="range"
-                    disabled={isSliderDisabled}
-                    id="salaryRange"
-                    name="salaryRange"
-                    min="10000"
-                    max="500000"
-                    value={!isSliderDisabled ? formData.salaryRange : 0}
-                    onChange={handleChange}
-                    required
-                  />
-                  <div className="text-center">
-                    ${formData.salaryRange || 75000}
+                <div className="flex space-x-3">
+                  <div className="mb-4 w-1/2 ">
+                    <h2 className="text-lg font-semibold mb-2">Salary Range</h2>
+                    <label className="block mb-1" htmlFor="salaryRange">
+                      Select Salary Range:
+                    </label>
+                    <input
+                      className="border rounded w-full cursor-pointer ${!isSliderEnabled ? 'bg-gray-200' : 'bg-green-500'} "
+                      type="range"
+                      disabled={isSliderDisabled}
+                      id="salaryRange"
+                      name="salaryRange"
+                      min="0"
+                      max="700000"
+                      value={!isSliderDisabled ? formData.salaryRange : 0}
+                      onChange={handleChange}
+                      required
+                    />
+                    <div className="text-center">
+                      $
+                      {new Intl.NumberFormat("en-US", {
+                        style: "decimal",
+                      }).format(formData.salaryRange || 0)}
+                    </div>
+                  </div>
+                  <div className="flex items-center space-x-4 mt-4">
+                    <input
+                      type="checkbox"
+                      checked={isSliderDisabled}
+                      onChange={(e) => setIsSliderDisabled(e.target.checked)}
+                      className="toggle-checkbox"
+                    />
+                    <span>Skip Salary</span>
                   </div>
                 </div>
-                <div className="flex items-center space-x-4">
-                  <input
-                    type="checkbox"
-                    checked={isSliderDisabled}
-                    onChange={(e) => setIsSliderDisabled(e.target.checked)}
-                    className="toggle-checkbox" // Add any required Tailwind classes here
-                  />
-                  <span>Skip Salary</span>
+              </div>
+              <div className="container dropdown">
+                <h2 className="text-lg font-semibold mb-2">Location</h2>
+                <div className="space-y-4">
+                  <div className="country__dropdown">
+                    <label
+                      htmlFor="country"
+                      className="block mb-2 text-sm font-medium text-gray-900"
+                    >
+                      Select a Country:
+                    </label>
+                    <select
+                      id="country"
+                      value={formData.positionCountry}
+                      onChange={handleCountryChange}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    >
+                      <option value="">Select a country</option>
+                      {Object.keys(countryData).map((country) => (
+                        <option key={country} value={country}>
+                          {country}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+                  <div className="city__dropdown">
+                    <label
+                      htmlFor="city"
+                      className="block mb-2 text-sm font-medium text-gray-900"
+                    >
+                      Select a City:
+                    </label>
+                    <select
+                      id="city"
+                      value={formData.positionCity}
+                      onChange={handleCityChange}
+                      disabled={!selectedCountry}
+                      className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
+                    >
+                      <option value="">Select a city</option>
+                      {cities.map((city) => (
+                        <option key={city} value={city}>
+                          {city}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
                 </div>
               </div>
-
-              <button
-                className="mt-4 bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600"
-                type="submit"
-              >
-                Submit
-              </button>
+              <div className="submit__button mt-10">
+                <button
+                  className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600"
+                  type="submit"
+                >
+                  Submit
+                </button>
+              </div>
             </form>
           </div>
           <div className="footer pt-20">
