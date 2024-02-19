@@ -7,8 +7,6 @@ import { RiComputerFill } from "react-icons/ri";
 import { FaMoneyBill } from "react-icons/fa";
 
 export default function JobListingPageHeader({ jobData }) {
-  console.log("this is job listing page header", jobData);
-
   function formatDate(dateString) {
     const date = new Date(dateString);
     const mm = String(date.getMonth() + 1).padStart(2, "0"); // January is 0!
@@ -20,6 +18,14 @@ export default function JobListingPageHeader({ jobData }) {
 
   const originalFormatDate = jobData.currentDate;
   const formatedDate = formatDate(originalFormatDate);
+
+  const formatNumber = (number) => {
+    const roundedNumber = Math.floor(number);
+    const formattedNumber = roundedNumber.toLocaleString("en-US");
+
+    return formattedNumber;
+  };
+  const formattedNumber = formatNumber(jobData.salaryRange);
 
   return (
     <div className="h-48 mobile:w-11/12 tablet:w-10/12 max-w-[700px] min-w-[400px]  bg-white rounded-md shadow-lg flex">
@@ -52,13 +58,19 @@ export default function JobListingPageHeader({ jobData }) {
             <div className="location__icon">
               <FaLocationPin />
             </div>
-            <div className="location">Berlin,Germany</div>
+            <div className="location space-x-1">
+              <span>{jobData.positionCity},</span>
+              <span>{jobData.positionCountry}</span>
+            </div>
           </div>
           <div className="salary__container flex items-center space-x-2 ">
             <div className="location__icon">
               <FaMoneyBill />
             </div>
-            <div className="salary">Salary Range</div>
+            <div className="salary space-x-1">
+              <span>{formattedNumber}</span>
+              <span>{jobData.currency}</span>
+            </div>
           </div>
         </div>
       </div>

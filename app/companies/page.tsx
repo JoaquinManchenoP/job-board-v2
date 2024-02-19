@@ -7,7 +7,6 @@ import Footer from "../components/Footer";
 import PageSpecificHeader from "../components/Header/PageSpecificHeader/PageSpecificHeader";
 
 export default function CompaniesPage() {
-  console.log(CompanyData);
   return (
     <div className="companies__page">
       <div className="featured__companies__header">

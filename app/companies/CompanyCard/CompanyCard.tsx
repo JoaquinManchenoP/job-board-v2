@@ -1,8 +1,8 @@
 import React from "react";
 import { AiFillTags } from "react-icons/ai";
+import { BsPeopleFill } from "react-icons/bs";
 
 export default function CompanyCard({ company }) {
-  console.log(company.companyLogo);
   return (
     <div className="h-[500px] mobile:w-11/12 tablet:w-11/12 max-w-[700px]  bg-white rounded-md shadow-lg flex flex-col">
       <div className="image h-1/2 w-full">

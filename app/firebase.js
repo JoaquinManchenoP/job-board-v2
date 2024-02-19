@@ -25,7 +25,6 @@ getDocs(userRef).then((snapshot) => {
   snapshot.forEach((doc) => {
     users.push({ ...doc.data(), id: doc.id });
   });
-  console.log("Active users:", users);
 });
 
 const jobListingRef = collection(db, "jobPostings");

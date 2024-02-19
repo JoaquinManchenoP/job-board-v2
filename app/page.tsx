@@ -30,10 +30,6 @@ export default function Home() {
     fetchData();
   }, []);
 
-  if (jobListings) {
-    console.log(jobListings);
-  }
-
   return (
     <main className="flex min-h-screen flex-col items-center">
       <div className="featured h-full w-full">

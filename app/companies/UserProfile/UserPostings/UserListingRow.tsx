@@ -7,7 +7,6 @@ export default function UserListingRow({ jobData, setHeaderGraph }) {
   const [deleatedDocument, setDeleatedDocument] = useState(false);
 
   const handleListingClicked = () => {
-    console.log("this listing was just clicked");
     setHeaderGraph({
       numberOfClicks: 57,
     });

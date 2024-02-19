@@ -13,11 +13,6 @@ export default function userProfile() {
   const { user, googleSignIn } = userAuth();
   const [loginAgain, setLoginAgain] = useState(false);
   const pathname = usePathname();
-  const [headerGraphData, setHeaderGraphData] = useState({
-    numberOfClicks: 0,
-  });
-
-  console.log("this is the number of clicks", headerGraphData);
 
   useEffect(() => {
     const checkUser = () => {

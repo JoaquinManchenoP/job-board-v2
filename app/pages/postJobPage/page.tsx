@@ -8,9 +8,11 @@ import { usePathname } from "next/navigation";
 import LoadingSpinner from "@/app/components/LoadingSpinner/LoadingSpinner";
 import Link from "next/link";
 import { countryData } from "./countryData/countryData";
+import CurrencyDropdown from "./currencyTypeData/CurrencyDropdown";
 
 export default function PostJob() {
   const pathname = usePathname();
+  const [selectedCurrency, setSelectedCurrency] = useState("");
   const [isSliderDisabled, setIsSliderDisabled] = useState(false);
   const [loading, setLoading] = useState(true);
   const { user, googleSignIn } = userAuth();
@@ -31,6 +33,7 @@ export default function PostJob() {
     salaryRange: 0,
     positionCountry: "",
     positionCity: "",
+    currency: "",
   });
 
   useEffect(() => {
@@ -70,23 +73,25 @@ export default function PostJob() {
 
   const handleCountryChange = (e) => {
     const newCountry = e.target.value;
-    setSelectedCountry(newCountry); // Update local UI state
-    setCities(newCountry ? countryData[newCountry] : []); // Update cities based on the selected country
-    setSelectedCity(""); // Reset city selection
+    setSelectedCountry(newCountry);
+    setCities(newCountry ? countryData[newCountry] : []);
+    setSelectedCity("");
 
-    // Update formData for submission
     setFormData((prevData) => ({
       ...prevData,
       positionCountry: newCountry,
-      positionCity: "", // Reset city in formData as well
+      positionCity: "",
     }));
+  };
+
+  const handleCurrencyChange = (e) => {
+    setSelectedCurrency(e.target.value);
   };
 
   const handleCityChange = (e) => {
     const newCity = e.target.value;
-    setSelectedCity(newCity); // Update local UI state if necessary
+    setSelectedCity(newCity);
 
-    // Update formData for submission
     setFormData((prevData) => ({
       ...prevData,
       positionCity: newCity,
@@ -111,9 +116,9 @@ export default function PostJob() {
         salaryRange: formData.salaryRange,
         positionCountry: selectedCountry,
         positionCity: selectedCity,
+        currency: selectedCurrency,
       };
       setFormData(updatedFormData);
-      console.log(updatedFormData);
       addDataToFirestore(updatedFormData);
     }
     setFormData({
@@ -129,6 +134,7 @@ export default function PostJob() {
       salaryRange: 0,
       positionCountry: "",
       positionCity: "",
+      currency: "",
     });
   };
 
@@ -259,7 +265,7 @@ export default function PostJob() {
                       id="salaryRange"
                       name="salaryRange"
                       min="0"
-                      max="700000"
+                      max="400000"
                       value={!isSliderDisabled ? formData.salaryRange : 0}
                       onChange={handleChange}
                       required
@@ -271,6 +277,7 @@ export default function PostJob() {
                       }).format(formData.salaryRange || 0)}
                     </div>
                   </div>
+
                   <div className="flex items-center space-x-4 mt-4">
                     <input
                       type="checkbox"
@@ -281,6 +288,19 @@ export default function PostJob() {
                     <span>Skip Salary</span>
                   </div>
                 </div>
+                {isSliderDisabled ? (
+                  <span></span>
+                ) : (
+                  <div className="select__currency mb-5">
+                    <label className="text-sm" htmlFor="currency">
+                      Select a Currency:
+                    </label>
+                    <CurrencyDropdown
+                      selectedCurrency={selectedCurrency}
+                      onCurrencyChange={handleCurrencyChange}
+                    />
+                  </div>
+                )}
               </div>
               <div className="container dropdown">
                 <h2 className="text-lg font-semibold mb-2">Location</h2>
@@ -330,6 +350,7 @@ export default function PostJob() {
                   </div>
                 </div>
               </div>
+
               <div className="submit__button mt-10">
                 <button
                   className="bg-blue-500 text-white font-semibold py-2 px-4 rounded hover:bg-blue-600"
