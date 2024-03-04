@@ -41,6 +41,8 @@ export default function userProfile() {
     }
   };
 
+  console.log(user);
+
   return (
     <div className="profile__page  h-screen w-screen">
       {loading ? (
@@ -76,7 +78,7 @@ export default function userProfile() {
               <PageSpecificHeader pageTitle={"Profile"} />
             </div>
             <div className="flex-grow h-[800px] w-11/12">
-              <PostingsSectionComponent setHeaderGraph={setHeaderGraphData} />
+              <PostingsSectionComponent />
             </div>
           </div>
           <div className="footer pt-10">

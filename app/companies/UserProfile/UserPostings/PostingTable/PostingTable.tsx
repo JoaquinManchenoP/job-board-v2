@@ -1,6 +1,6 @@
 import React from "react";
 import UserListingRow from "../UserListingRow";
-export default function PostingTable({ userJobs, setHeaderGraph }) {
+export default function PostingTable({ userJobs }) {
   return (
     <table className="w-full border-separate border-spacing-y-3 ">
       <thead>
@@ -13,11 +13,7 @@ export default function PostingTable({ userJobs, setHeaderGraph }) {
       </thead>
       <tbody>
         {userJobs.map((job, idx) => (
-          <UserListingRow
-            key={idx}
-            jobData={job}
-            setHeaderGraph={setHeaderGraph}
-          />
+          <UserListingRow key={idx} jobData={job} />
         ))}
       </tbody>
     </table>

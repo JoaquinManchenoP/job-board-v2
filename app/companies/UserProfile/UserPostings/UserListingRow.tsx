@@ -3,14 +3,8 @@ import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { TiDelete } from "react-icons/ti";
 
-export default function UserListingRow({ jobData, setHeaderGraph }) {
+export default function UserListingRow({ jobData }) {
   const [deleatedDocument, setDeleatedDocument] = useState(false);
-
-  const handleListingClicked = () => {
-    setHeaderGraph({
-      numberOfClicks: 57,
-    });
-  };
 
   const deleteDocument = () => {
     const documentIdToDelete = jobData.id;
@@ -31,10 +25,7 @@ export default function UserListingRow({ jobData, setHeaderGraph }) {
   }
 
   return (
-    <tr
-      onClick={handleListingClicked}
-      className="h-14 w-full border-t bg-gray-200 shadow-2xl "
-    >
+    <tr className="h-14 w-full border-t bg-gray-200 shadow-2xl ">
       <td className="h-[50px] w-2/5  ">
         <div className="flex h-full ">
           <div className="w-full h-full flex-grow flex flex-col justify-center pl-3">
