@@ -1,11 +1,9 @@
 import React from "react";
-import logo from "../../images/logo.png";
-import Image from "next/image";
 import { FaBuilding } from "react-icons/fa";
 import { FaLocationPin } from "react-icons/fa6";
+import { motion } from "framer-motion";
 
 export default function JobCard({ position }) {
-  console.log(position);
   function formatDate(dateString) {
     const date = new Date(dateString);
     const mm = String(date.getMonth() + 1).padStart(2, "0"); // January is 0!
@@ -19,13 +17,12 @@ export default function JobCard({ position }) {
   const formatedDate = formatDate(originalFormatDate);
 
   return (
-    <div className="h-40 mobile:w-11/12 tablet:w-10/12 max-w-[700px] min-w-[400px]  bg-white rounded-md shadow-xl flex">
-      <div className="company_image h-full w-[130px] flex flex-col items-center justify-center">
-        <div className="image h-20 w-20  rounded-full">
-          <Image src={logo} alt="image" />
-        </div>
-      </div>
-      <div className="info h-full w-full mt-2">
+    <motion.div
+      whileHover={{ scale: 1.04 }}
+      whileTap={{ scale: 0.98 }}
+      className="h-40 mobile:w-11/12 tablet:w-10/12 max-w-[700px] min-w-[400px]  bg-white rounded-md shadow-xl flex "
+    >
+      <div className="info h-full w-full mt-3 ml-7">
         <div className="position__title h-11 w-full  flex items-center border-b-2 ">
           <span className="text-lg">{position.jobTitle}</span>
         </div>
@@ -51,6 +48,6 @@ export default function JobCard({ position }) {
           </span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }

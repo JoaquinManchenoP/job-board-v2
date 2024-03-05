@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { TiDelete } from "react-icons/ti";
+import { motion } from "framer-motion";
 
 export default function UserListingRow({ jobData }) {
   const [deleatedDocument, setDeleatedDocument] = useState(false);
@@ -29,17 +30,18 @@ export default function UserListingRow({ jobData }) {
       <td className="h-[50px] w-2/5  ">
         <div className="flex h-full ">
           <div className="w-full h-full flex-grow flex flex-col justify-center pl-3">
-            {/* <Link href={`/pages/jobListing/${jobData.id}`}> */}
             <div className="position__title text-md  ">{jobData.jobTitle}</div>
-            {/* </Link> */}
+
             <div className="date__posted text-xs">{jobData.currentDate}</div>
           </div>
-          <div
+          <motion.div
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.98 }}
             className="w-2/12 h-full bg-red-500 flex items-center justify-center rounded-md cursor-pointer "
             onClick={deleteDocument}
           >
             <TiDelete className="text-4xl text-white" />
-          </div>
+          </motion.div>
         </div>
       </td>
     </tr>

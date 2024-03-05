@@ -29,12 +29,7 @@ export default function JobListingPageHeader({ jobData }) {
 
   return (
     <div className="h-48 mobile:w-11/12 tablet:w-10/12 max-w-[700px] min-w-[400px]  bg-white rounded-md shadow-lg flex">
-      <div className="company_image h-full w-[130px] flex flex-col items-center justify-center">
-        <div className="image h-20 w-20 rounded-full">
-          <Image src={logo} alt="image" />
-        </div>
-      </div>
-      <div className="info h-full w-full flex flex-col">
+      <div className="info h-full w-full flex flex-col ml-9">
         <div className="position__title h-12 w-full flex items-center border-b-2 justify-between">
           <span className="text-lg">{jobData.jobTitle}</span>
           <span className="posted__date text-sm mr-3">
