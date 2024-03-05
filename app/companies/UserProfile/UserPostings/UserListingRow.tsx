@@ -25,7 +25,7 @@ export default function UserListingRow({ jobData }) {
   }
 
   return (
-    <tr className="h-14 w-full border-t bg-gray-200 shadow-2xl ">
+    <tr className="h-14 w-7/10 border-t bg-gray-200 shadow-2xl ">
       <td className="h-[50px] w-2/5  ">
         <div className="flex h-full ">
           <div className="w-full h-full flex-grow flex flex-col justify-center pl-3">
@@ -42,9 +42,6 @@ export default function UserListingRow({ jobData }) {
           </div>
         </div>
       </td>
-      <td className="text-right pr-3">100</td>
-      <td className="text-right pr-4 ">50</td>
-      <td className="text-right ">200</td>
     </tr>
   );
 }

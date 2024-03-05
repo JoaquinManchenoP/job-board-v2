@@ -2,7 +2,7 @@ export const countryData = {
   Remote: ["Remote"],
   Russia: ["Moscow", "Saint Petersburg", "Novosibirsk", "Yekaterinburg"],
   Germany: ["Berlin", "Hamburg", "Munich", "Cologne"],
-  UnitedKingdom: ["London", "Birmingham", "Manchester", "Glasgow"],
+  UK: ["London", "Birmingham", "Manchester", "Glasgow"],
   Grance: ["Paris", "Marseille", "Lyon", "Toulouse"],
   Italy: ["Rome", "Milan", "Naples", "Turin"],
   Spain: ["Madrid", "Barcelona", "Valencia", "Seville"],
