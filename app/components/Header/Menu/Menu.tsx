@@ -43,7 +43,7 @@ export default function Menu() {
             className="companies__option h-full w-4/5  flex items-center border-b border-gray-400"
             onClick={() => setMenuState(false)}
           >
-            <Link href="/companies">companies</Link>
+            <Link href="/companies">Companies</Link>
           </div>
           {user ? (
             <div
