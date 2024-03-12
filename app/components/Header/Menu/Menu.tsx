@@ -32,7 +32,7 @@ export default function Menu() {
               onClick={() => setMenuState(false)}
               className="home__option h-full w-4/5 flex items-center border-b border-gray-400"
             >
-              <Link href="/pages/userProfile" className="profile">
+              <Link href="/pages/UserProfile" className="profile">
                 Profile
               </Link>
             </div>
@@ -64,7 +64,7 @@ export default function Menu() {
             </div>
           ) : (
             <div className="companies__option h-full w-4/5  flex items-center">
-              <Link href="/pages/userProfile">
+              <Link href="/pages/UserProfile">
                 <button onClick={handleSignIn}>Sign in</button>
               </Link>
             </div>

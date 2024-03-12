@@ -8,7 +8,7 @@ import Link from "next/link";
 import Footer from "../../components/Footer";
 import PageSpecificHeader from "@/app/components/Header/PageSpecificHeader/PageSpecificHeader";
 
-export default function userProfile() {
+export default function UserProfile() {
   const [loading, setLoading] = useState(true);
   const { user, googleSignIn } = userAuth();
   const [loginAgain, setLoginAgain] = useState(false);
