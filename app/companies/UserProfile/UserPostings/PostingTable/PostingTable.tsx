@@ -1,6 +1,27 @@
 import React from "react";
 import UserListingRow from "../UserListingRow";
-export default function PostingTable({ userJobs }) {
+export interface UserJob {
+  companyName: string;
+  companyWebsite: string;
+  currency: string;
+  currentDate: string;
+  email: string;
+  id: string;
+  jobDescription: string;
+  jobTitle: string;
+  name: string;
+  positionCity: string;
+  positionCountry: string;
+  salaryRange: string;
+  tel: string;
+  userId: string;
+}
+
+interface PostingTableProps {
+  userJobs: UserJob[];
+}
+
+const PostingTable: React.FC<PostingTableProps> = ({ userJobs }) => {
   return (
     <table className="w-9/12 border-separate border-spacing-y-3 ">
       <thead>
@@ -15,4 +36,6 @@ export default function PostingTable({ userJobs }) {
       </tbody>
     </table>
   );
-}
+};
+
+export default PostingTable;

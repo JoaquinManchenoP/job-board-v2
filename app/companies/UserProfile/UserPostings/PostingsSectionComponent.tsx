@@ -3,28 +3,49 @@ import PostingTable from "./PostingTable/PostingTable";
 import { useState } from "react";
 import { collection, getDocs, where, query } from "firebase/firestore";
 import { db } from "../../../firebase";
-import jobListing from "@/app/components/FeaturedSection/jobListing/jobListing";
-import { userAuth } from "@/app/context/AuthContext";
+import { useUserAuth } from "@/app/context/AuthContext";
+interface User {
+  uid: string;
+}
+
+interface UserJob {
+  companyName: string;
+  companyWebsite: string;
+  currency: string;
+  currentDate: string;
+  id: string;
+  email: string;
+  jobDescription: string;
+  jobTitle: string;
+  name: string;
+  positionCity: string;
+  positionCountry: string;
+  salaryRange: string;
+  tel: string;
+  userId: string;
+}
 
 export default function PostingsSectionComponent() {
-  const [userJobs, setUserJobs] = useState([]);
-  const { user } = userAuth();
+  const [userJobs, setUserJobs] = useState<UserJob[]>([]);
+  const { user }: { user: User } = useUserAuth() as { user: User };
+  console.log(user);
 
   useEffect(() => {
     const fetchUserJobs = async () => {
-      console.log(user.uid);
       if (user && user.uid) {
         const jobsQuery = query(
-          collection(db, "jobPostings"), // Replace with your Firestore collection name
+          collection(db, "jobPostings"),
           where("userId", "==", user.uid)
         );
 
         try {
           const querySnapshot = await getDocs(jobsQuery);
-          const userJobsData = [];
+          const userJobsData: UserJob[] = [];
+          console.log("UserJob:", user);
 
           querySnapshot.forEach((doc) => {
-            userJobsData.push({ ...doc.data(), id: doc.id });
+            const jobData = { ...doc.data(), id: doc.id } as UserJob;
+            userJobsData.push(jobData);
           });
 
           setUserJobs(userJobsData);

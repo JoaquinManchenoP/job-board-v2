@@ -8,7 +8,7 @@ import { db } from "@/app/firebase";
 import LoadingSpinner from "@/app/components/LoadingSpinner/LoadingSpinner";
 import JobListingPageHeader from "@/app/components/JobListingPageComponents/JobListingPageHeader";
 
-export default function jobListingPage() {
+export default function JobListingPage() {
   const [jobData, setJobData] = useState(null);
   const pathname = usePathname();
   useEffect(() => {

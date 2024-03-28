@@ -3,8 +3,13 @@ import { doc, deleteDoc } from "firebase/firestore";
 import { db } from "../../../firebase";
 import { TiDelete } from "react-icons/ti";
 import { motion } from "framer-motion";
+import { UserJob } from "./PostingTable/PostingTable";
 
-export default function UserListingRow({ jobData }) {
+interface UserListingRowProps {
+  jobData: UserJob;
+}
+
+export default function UserListingRow({ jobData }: UserListingRowProps) {
   const [deleatedDocument, setDeleatedDocument] = useState(false);
 
   const deleteDocument = () => {

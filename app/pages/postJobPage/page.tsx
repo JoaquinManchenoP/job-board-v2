@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import PageSpecificHeader from "@/app/components/Header/PageSpecificHeader/PageSpecificHeader";
-import { userAuth } from "../../context/AuthContext";
+import { useUserAuth } from "../../context/AuthContext";
 import { addDataToFirestore } from "@/app/firebase";
 import Footer from "@/app/components/Footer";
 import { usePathname } from "next/navigation";
@@ -15,7 +15,7 @@ export default function PostJob() {
   const [selectedCurrency, setSelectedCurrency] = useState("");
   const [isSliderDisabled, setIsSliderDisabled] = useState(false);
   const [loading, setLoading] = useState(true);
-  const { user, googleSignIn } = userAuth();
+  const { user, googleSignIn } = useUserAuth();
   const [loginAgain, setLoginAgain] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedCity, setSelectedCity] = useState("");

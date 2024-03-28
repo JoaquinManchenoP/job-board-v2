@@ -3,12 +3,17 @@ import React, { useState } from "react";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Menu from "./Menu/Menu";
 import Link from "next/link";
-import { userAuth } from "@/app/context/AuthContext";
+import { useUserAuth } from "@/app/context/AuthContext";
 import Image from "next/image";
 import logo from "../../images/logo.png";
 
+interface UserAuthData {
+  menuState: boolean;
+  setMenuState: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
 export default function Header() {
-  const { menuState, setMenuState } = userAuth();
+  const { menuState, setMenuState } = useUserAuth();
 
   const handleMenuState = () => {
     if (menuState) {

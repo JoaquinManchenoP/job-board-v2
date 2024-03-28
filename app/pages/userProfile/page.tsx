@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { userAuth } from "@/app/context/AuthContext";
+import { useUserAuth } from "@/app/context/AuthContext";
 import LoadingSpinner from "../../components/LoadingSpinner/LoadingSpinner";
 import PostingsSectionComponent from "../../companies/UserProfile/UserPostings/PostingsSectionComponent";
 import { usePathname } from "next/navigation";
@@ -10,7 +10,7 @@ import PageSpecificHeader from "@/app/components/Header/PageSpecificHeader/PageS
 
 export default function UserProfile() {
   const [loading, setLoading] = useState(true);
-  const { user, googleSignIn } = userAuth();
+  const { user, googleSignIn } = useUserAuth();
   const [loginAgain, setLoginAgain] = useState(false);
   const pathname = usePathname();
 
