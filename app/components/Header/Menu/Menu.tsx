@@ -1,9 +1,10 @@
 "use client";
 import Link from "next/link";
-import { useUserAuth } from "@/app/context/AuthContext";
+import { useUserAuth, AuthContextData } from "@/app/context/AuthContext";
 
 export default function Menu() {
-  const { user, logOut, setMenuState, googleSignIn } = useUserAuth();
+  const { user, logOut, setMenuState, googleSignIn } =
+    useUserAuth() as AuthContextData;
 
   const handleSignIn = async () => {
     try {

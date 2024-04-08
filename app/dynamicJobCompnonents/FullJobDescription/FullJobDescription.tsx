@@ -1,6 +1,12 @@
 import React from "react";
 
-export default function FullJobDescription({ jobDescription }) {
+interface FullJobDescriptionProps {
+  jobDescription: string;
+}
+
+export default function FullJobDescription({
+  jobDescription,
+}: FullJobDescriptionProps) {
   return (
     <div className="job__description h-full w-9/12 flex flex-col items-center justify-center ">
       <div className="description__content h-full w-10/12 bg-gray-100 rounded-md">

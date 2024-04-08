@@ -8,7 +8,7 @@ export default function FeaturedJobCard() {
       <div className="image h-3/5 w-full">
         <img
           className="company__image h-full w-full object-cover"
-          src="https://www.bobbitt.com/wp-content/uploads/2018/07/6-Teamwork-Skills-Every-Company-Should-Cultivate.jpg"
+          src="/working-people.jpg"
         ></img>
       </div>
       <div className="company__description  h-2/5 w-full flex  items-center">

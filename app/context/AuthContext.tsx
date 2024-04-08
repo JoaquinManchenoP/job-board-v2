@@ -9,14 +9,33 @@ import {
 import { auth } from "../firebase";
 import { useRouter } from "next/navigation";
 
-const AuthContext = createContext();
+interface User {
+  uid: string;
+}
 
-export const AuthContextProvider = ({ children }) => {
+export interface AuthContextData {
+  user: User | null; // User data or null if not authenticated
+  // signIn: (credentials: any) => Promise<void>; // Function to sign in
+  logOut: () => Promise<void>; // Function to sign out
+  googleSignIn: () => Promise<void>;
+  menuState: boolean; // Current state of the menu
+  setMenuState: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+interface AuthContextProviderProps {
+  children: React.ReactNode; // Define children property
+}
+
+const AuthContext = createContext<AuthContextData | undefined>(undefined);
+
+export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
+  children,
+}) => {
   const { push } = useRouter();
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState<User | null>(null);
   const [menuState, setMenuState] = useState(false);
 
-  const googleSignIn = () => {
+  const googleSignIn = async (): Promise<void> => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
@@ -34,8 +53,8 @@ export const AuthContextProvider = ({ children }) => {
       });
   };
 
-  const logOut = () => {
-    signOut(auth);
+  const logOut = async (): Promise<void> => {
+    await signOut(auth);
   };
 
   useEffect(() => {
@@ -56,6 +75,12 @@ export const AuthContextProvider = ({ children }) => {
   );
 };
 
-export const useUserAuth = () => {
-  return useContext(AuthContext);
+const useUserAuth = (): AuthContextData => {
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useUserAuth must be used within an AuthContextProvider");
+  }
+  return context;
 };
+
+export { useUserAuth };

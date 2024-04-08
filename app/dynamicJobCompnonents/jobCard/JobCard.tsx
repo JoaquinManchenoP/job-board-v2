@@ -3,8 +3,24 @@ import { FaBuilding } from "react-icons/fa";
 import { FaLocationPin } from "react-icons/fa6";
 import { motion } from "framer-motion";
 
-export default function JobCard({ position }) {
-  function formatDate(dateString) {
+interface JobCardProps {
+  position: {
+    jobTitle: string;
+    companyName: string;
+    positionCity: string;
+    positionCountry: string;
+    jobDescription: string;
+    salaryRange: string;
+    positionLocation: string;
+    salaryIn?: string;
+    companyLogo?: string;
+    jobId?: string;
+  };
+}
+
+export default function JobCard({ position }: JobCardProps) {
+  console.log("positon", position);
+  function formatDate(dateString: string) {
     const date = new Date(dateString);
     const mm = String(date.getMonth() + 1).padStart(2, "0"); // January is 0!
     const dd = String(date.getDate()).padStart(2, "0");

@@ -6,8 +6,30 @@ import logo from "../../images/logo.png";
 import { RiComputerFill } from "react-icons/ri";
 import { FaMoneyBill } from "react-icons/fa";
 
-export default function JobListingPageHeader({ jobData }) {
-  function formatDate(dateString) {
+interface JobData {
+  companyName: string;
+  companyWebsite: string;
+  currency: string;
+  currentDate: string;
+  email: string;
+  jobDescription: string;
+  jobTitle: string;
+  name: string;
+  positionCity: string;
+  positionCountry: string;
+  salaryRange: string;
+  tel: string;
+  userId: string;
+}
+
+interface JobListingPageHeaderProps {
+  jobData: JobData;
+}
+
+export default function JobListingPageHeader({
+  jobData,
+}: JobListingPageHeaderProps) {
+  function formatDate(dateString: string) {
     const date = new Date(dateString);
     const mm = String(date.getMonth() + 1).padStart(2, "0"); // January is 0!
     const dd = String(date.getDate()).padStart(2, "0");
@@ -19,13 +41,14 @@ export default function JobListingPageHeader({ jobData }) {
   const originalFormatDate = jobData.currentDate;
   const formatedDate = formatDate(originalFormatDate);
 
-  const formatNumber = (number) => {
-    const roundedNumber = Math.floor(number);
+  const formatNumber = (number: number | undefined) => {
+    const roundedNumber = Math.floor(number || 0);
     const formattedNumber = roundedNumber.toLocaleString("en-US");
 
     return formattedNumber;
   };
-  const formattedNumber = formatNumber(jobData.salaryRange);
+  const salaryRangeAsNumber = parseFloat(jobData.salaryRange); // Convert salaryRange to a number
+  const formattedNumber = formatNumber(salaryRangeAsNumber);
 
   return (
     <div className="h-48 mobile:w-11/12 tablet:w-10/12 max-w-[700px] min-w-[400px]  bg-white rounded-md shadow-lg flex">

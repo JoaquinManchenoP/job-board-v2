@@ -7,11 +7,6 @@ import { useUserAuth } from "@/app/context/AuthContext";
 import Image from "next/image";
 import logo from "../../images/logo.png";
 
-interface UserAuthData {
-  menuState: boolean;
-  setMenuState: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
 export default function Header() {
   const { menuState, setMenuState } = useUserAuth();
 

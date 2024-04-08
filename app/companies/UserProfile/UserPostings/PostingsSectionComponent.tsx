@@ -3,7 +3,8 @@ import PostingTable from "./PostingTable/PostingTable";
 import { useState } from "react";
 import { collection, getDocs, where, query } from "firebase/firestore";
 import { db } from "../../../firebase";
-import { useUserAuth } from "@/app/context/AuthContext";
+import { AuthContextData, useUserAuth } from "@/app/context/AuthContext";
+
 interface User {
   uid: string;
 }
@@ -27,7 +28,7 @@ interface UserJob {
 
 export default function PostingsSectionComponent() {
   const [userJobs, setUserJobs] = useState<UserJob[]>([]);
-  const { user }: { user: User } = useUserAuth() as { user: User };
+  const { user } = useUserAuth();
   console.log(user);
 
   useEffect(() => {
