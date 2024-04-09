@@ -1,4 +1,12 @@
-const CurrencyDropdown = ({ selectedCurrency, onCurrencyChange }) => {
+interface CurrencyDropdownProps {
+  selectedCurrency: string;
+  onCurrencyChange: (code: string) => void;
+}
+
+const CurrencyDropdown: React.FC<CurrencyDropdownProps> = ({
+  selectedCurrency,
+  onCurrencyChange,
+}) => {
   const currencies = [
     { code: "USD", label: "United States Dollar (USD)" },
     { code: "EUR", label: "Euro (EUR)" },
@@ -16,7 +24,7 @@ const CurrencyDropdown = ({ selectedCurrency, onCurrencyChange }) => {
     <select
       id="currency"
       value={selectedCurrency}
-      onChange={onCurrencyChange}
+      onChange={(event) => onCurrencyChange(event.target.value)}
       className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5"
     >
       <option className="" value="">

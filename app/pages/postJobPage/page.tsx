@@ -9,6 +9,7 @@ import LoadingSpinner from "@/app/components/LoadingSpinner/LoadingSpinner";
 import Link from "next/link";
 import { countryData } from "./countryData/countryData";
 import CurrencyDropdown from "./currencyTypeData/CurrencyDropdown";
+import { ChangeEvent } from "react";
 
 export default function PostJob() {
   const pathname = usePathname();
@@ -63,7 +64,9 @@ export default function PostJob() {
     }
   };
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     const { name, value } = e.target;
     setFormData((prevData) => ({
       ...prevData,
@@ -71,7 +74,7 @@ export default function PostJob() {
     }));
   };
 
-  const handleCountryChange = (e) => {
+  const handleCountryChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newCountry = e.target.value;
     setSelectedCountry(newCountry);
     setCities(newCountry ? countryData[newCountry] : []);
@@ -84,11 +87,12 @@ export default function PostJob() {
     }));
   };
 
-  const handleCurrencyChange = (e) => {
-    setSelectedCurrency(e.target.value);
+  const handleCurrencyChange = (code: string) => {
+    console.log(code);
+    setSelectedCurrency(code);
   };
 
-  const handleCityChange = (e) => {
+  const handleCityChange = (e: ChangeEvent<HTMLSelectElement>) => {
     const newCity = e.target.value;
     setSelectedCity(newCity);
 
@@ -102,7 +106,6 @@ export default function PostJob() {
     e.preventDefault();
     if (user.email) {
       const currentDate = new Date().toISOString().split("T")[0];
-
       const updatedFormData = {
         name: formData.name,
         email: user.email,
@@ -136,6 +139,7 @@ export default function PostJob() {
       positionCity: "",
       currency: "",
     });
+    setSelectedCurrency("");
   };
 
   return (

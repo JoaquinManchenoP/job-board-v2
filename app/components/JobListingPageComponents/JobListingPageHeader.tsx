@@ -1,12 +1,10 @@
 import React from "react";
-import Image from "next/image";
 import { FaBuilding } from "react-icons/fa";
 import { FaLocationPin } from "react-icons/fa6";
-import logo from "../../images/logo.png";
 import { RiComputerFill } from "react-icons/ri";
 import { FaMoneyBill } from "react-icons/fa";
 
-interface JobData {
+export interface JobData {
   companyName: string;
   companyWebsite: string;
   currency: string;

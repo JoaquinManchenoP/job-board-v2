@@ -7,9 +7,13 @@ import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/app/firebase";
 import LoadingSpinner from "@/app/components/LoadingSpinner/LoadingSpinner";
 import JobListingPageHeader from "@/app/components/JobListingPageComponents/JobListingPageHeader";
+import { DocumentSnapshot, DocumentData } from "firebase/firestore";
+import { JobData } from "../../../components/JobListingPageComponents/JobListingPageHeader";
 
 export default function JobListingPage() {
-  const [jobData, setJobData] = useState(null);
+  const [jobData, setJobData] = useState<DocumentSnapshot<DocumentData> | null>(
+    null
+  );
   const pathname = usePathname();
   useEffect(() => {
     const lastIndex = pathname.lastIndexOf("/");
@@ -22,9 +26,7 @@ export default function JobListingPage() {
     getDoc(documentRef)
       .then((docSnapshot) => {
         if (docSnapshot.exists()) {
-          const documentData = docSnapshot.data();
-          console.log("Document data:", documentData);
-          setJobData(documentData);
+          setJobData(docSnapshot);
         } else {
           console.log("Document does not exist");
         }
@@ -33,6 +35,13 @@ export default function JobListingPage() {
         console.error("Error fetching document:", error);
       });
   }, []);
+
+  const defaultJobData = {
+    companyName: "Default Company",
+    companyWebsite: "https://example.com",
+    currency: "USD",
+    currentDate: "2022-01-01",
+  };
 
   return (
     <>
@@ -46,7 +55,9 @@ export default function JobListingPage() {
                 </div>
               </>
             ) : (
-              <JobListingPageHeader jobData={jobData} />
+              <JobListingPageHeader
+                jobData={(jobData?.data() as JobData) ?? defaultJobData}
+              />
             )}
           </div>
           <div className="job__description h-[600px] w-full  flex items-center justify-center mt-10 ">
@@ -55,7 +66,13 @@ export default function JobListingPage() {
                 <LoadingSpinner />
               </div>
             ) : (
-              <FullJobDescription jobDescription={jobData.jobDescription} />
+              <FullJobDescription
+                jobDescription={
+                  (jobData instanceof DocumentSnapshot
+                    ? (jobData.data() as JobData)?.jobDescription
+                    : (jobData as JobData)?.jobDescription) ?? ""
+                }
+              />
             )}
           </div>
           <div className="footer h-20 w-full bg-red-400 mt-20">

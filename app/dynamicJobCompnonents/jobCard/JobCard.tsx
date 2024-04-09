@@ -10,16 +10,11 @@ interface JobCardProps {
     positionCity: string;
     positionCountry: string;
     jobDescription: string;
-    salaryRange: string;
-    positionLocation: string;
-    salaryIn?: string;
-    companyLogo?: string;
-    jobId?: string;
+    currentDate: string;
   };
 }
 
 export default function JobCard({ position }: JobCardProps) {
-  console.log("positon", position);
   function formatDate(dateString: string) {
     const date = new Date(dateString);
     const mm = String(date.getMonth() + 1).padStart(2, "0"); // January is 0!
