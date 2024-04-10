@@ -11,6 +11,7 @@ import { useRouter } from "next/navigation";
 
 interface User {
   uid: string;
+  email: string;
 }
 
 export interface AuthContextData {
@@ -59,7 +60,7 @@ export const AuthContextProvider: React.FC<AuthContextProviderProps> = ({
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
+      setUser(currentUser as User | null);
     });
     return () => {
       unsubscribe();

@@ -20,7 +20,7 @@ export default function PostJob() {
   const [loginAgain, setLoginAgain] = useState(false);
   const [selectedCountry, setSelectedCountry] = useState("");
   const [selectedCity, setSelectedCity] = useState("");
-  const [cities, setCities] = useState([]);
+  const [cities, setCities] = useState<string[]>([]);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -102,9 +102,9 @@ export default function PostJob() {
     }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    if (user.email) {
+    if (user && user?.email) {
       const currentDate = new Date().toISOString().split("T")[0];
       const updatedFormData = {
         name: formData.name,

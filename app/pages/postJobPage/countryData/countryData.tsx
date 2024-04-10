@@ -1,4 +1,8 @@
-export const countryData = {
+type CountryData = {
+  [key: string]: string[];
+};
+
+export const countryData: CountryData = {
   Remote: ["Remote"],
   Russia: ["Moscow", "Saint Petersburg", "Novosibirsk", "Yekaterinburg"],
   Germany: ["Berlin", "Hamburg", "Munich", "Cologne"],
