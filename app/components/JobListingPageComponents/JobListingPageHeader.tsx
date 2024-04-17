@@ -29,7 +29,7 @@ export default function JobListingPageHeader({
 }: JobListingPageHeaderProps) {
   function formatDate(dateString: string) {
     const date = new Date(dateString);
-    const mm = String(date.getMonth() + 1).padStart(2, "0"); // January is 0!
+    const mm = String(date.getMonth() + 1).padStart(2, "0");
     const dd = String(date.getDate()).padStart(2, "0");
     const yy = date.getFullYear().toString().substr(-2);
 
@@ -45,7 +45,7 @@ export default function JobListingPageHeader({
 
     return formattedNumber;
   };
-  const salaryRangeAsNumber = parseFloat(jobData.salaryRange); // Convert salaryRange to a number
+  const salaryRangeAsNumber = parseFloat(jobData.salaryRange);
   const formattedNumber = formatNumber(salaryRangeAsNumber);
 
   return (
