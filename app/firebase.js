@@ -4,12 +4,13 @@ import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDaHxei2FdLMQunTPtC8ly0uAKOU2SHs5w",
-  authDomain: "capstone-1532a.firebaseapp.com",
-  projectId: "capstone-1532a",
-  storageBucket: "capstone-1532a.appspot.com",
-  messagingSenderId: "249169885639",
-  appId: "1:249169885639:web:8c2b235dcb601de245c1e2",
+  apiKey: "AIzaSyDuHlbXLAXeIFCHpPeGe6J3TnQm9MpX6Zw",
+  authDomain: "job-board-adf02.firebaseapp.com",
+  projectId: "job-board-adf02",
+  storageBucket: "job-board-adf02.appspot.com",
+  messagingSenderId: "946687714693",
+  appId: "1:946687714693:web:3d83c7c6d0ad29a50110ec",
+  measurementId: "G-K2CEPS5Z5J",
 };
 
 const app = initializeApp(firebaseConfig);
