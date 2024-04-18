@@ -4,13 +4,13 @@ import { getFirestore, collection, getDocs, addDoc } from "firebase/firestore";
 import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDuHlbXLAXeIFCHpPeGe6J3TnQm9MpX6Zw",
-  authDomain: "job-board-adf02.firebaseapp.com",
-  projectId: "job-board-adf02",
-  storageBucket: "job-board-adf02.appspot.com",
-  messagingSenderId: "946687714693",
-  appId: "1:946687714693:web:3d83c7c6d0ad29a50110ec",
-  measurementId: "G-K2CEPS5Z5J",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STRORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
