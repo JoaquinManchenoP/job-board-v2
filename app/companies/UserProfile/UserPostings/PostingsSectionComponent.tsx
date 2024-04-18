@@ -29,7 +29,6 @@ interface UserJob {
 export default function PostingsSectionComponent() {
   const [userJobs, setUserJobs] = useState<UserJob[]>([]);
   const { user } = useUserAuth();
-  console.log(user);
 
   useEffect(() => {
     const fetchUserJobs = async () => {
@@ -42,8 +41,6 @@ export default function PostingsSectionComponent() {
         try {
           const querySnapshot = await getDocs(jobsQuery);
           const userJobsData: UserJob[] = [];
-          console.log("UserJob:", user);
-
           querySnapshot.forEach((doc) => {
             const jobData = { ...doc.data(), id: doc.id } as UserJob;
             userJobsData.push(jobData);

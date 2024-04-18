@@ -41,8 +41,6 @@ export default function UserProfile() {
     }
   };
 
-  console.log(user);
-
   return (
     <div className="profile__page  h-screen w-screen">
       {loading ? (

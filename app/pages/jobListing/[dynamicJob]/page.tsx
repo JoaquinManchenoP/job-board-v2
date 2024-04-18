@@ -18,9 +18,6 @@ export default function JobListingPage() {
   useEffect(() => {
     const lastIndex = pathname.lastIndexOf("/");
     const resultId = pathname.slice(lastIndex + 1);
-
-    console.log(resultId);
-
     const documentRef = doc(db, "jobPostings", resultId);
 
     getDoc(documentRef)

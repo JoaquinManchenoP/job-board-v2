@@ -23,7 +23,7 @@ interface PostingTableProps {
 
 const PostingTable: React.FC<PostingTableProps> = ({ userJobs }) => {
   return (
-    <table className="w-9/12 border-separate border-spacing-y-3 ">
+    <table className="w-9/12 border-separate border-spacing-y-6 ">
       <thead>
         <tr className="bg-gray-100">
           <th className="w-1/3">Live Postings</th>

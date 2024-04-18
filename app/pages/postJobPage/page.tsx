@@ -88,7 +88,6 @@ export default function PostJob() {
   };
 
   const handleCurrencyChange = (code: string) => {
-    console.log(code);
     setSelectedCurrency(code);
   };
 
