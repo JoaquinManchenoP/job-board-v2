@@ -4,9 +4,9 @@ A job board that allows user to browse trough tech jobs. It alos allows users to
 
 
 ## Screenshots
-![Alt text](movieapp2.png?raw=true "movieapp2")
+![Alt text](techbridge.png?raw=true "techbridge")
 <br/>
-![Alt text](movieapp1.png?raw=true "movieapp1")
+![Alt text](tech-bridge-jobs.png?raw=true "jobs")
 
 
 ## Stack
