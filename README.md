@@ -10,7 +10,7 @@ A job board that allows user to browse trough tech jobs. It alos allows users to
 
 
 ## Stack
-Next.js, Typescryit, Firebase, Vervel
+Next.js, Typescript, Firebase, Vercel
 
 
 ## Run Locally
